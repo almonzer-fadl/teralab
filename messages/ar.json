@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "idlies": "إيدليس",
+    "bowld": "بولد",
+    "dunkd": "دونكد",
+    "dailyeeSides": "أطباق دايلي"
+  },
+  "hero": {
+    "slide1": {
+      "title": "إيدليس صحي محسن",
+      "description": "اختبر المذاق الأصيل للمطبخ الجنوبي الهندي"
+    },
+    "slide2": {
+      "title": "ماتكا ثاير سادهام",
+      "description": "أرز الزبادي التقليدي مع لمسة عصرية"
+    },
+    "slide3": {
+      "title": "طازج وأصيل",
+      "description": "مصنوع بالحب والوصفات التقليدية"
+    },
+    "orderNow": "اطلب الآن",
+    "watchStory": "شاهد قصتنا"
+  },
+  "common": {
+    "loading": "جاري التحميل...",
+    "error": "خطأ",
+    "success": "نجح"
+  },
+  "language": {
+    "english": "English",
+    "arabic": "العربية"
+  }
+}
