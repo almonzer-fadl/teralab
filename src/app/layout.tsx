@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "House of Idlies",
-  description: "Authentic South Indian cuisine",
+  title: "Tera lab",
+  description: "Tera lab",
 };
 
 export default function RootLayout({

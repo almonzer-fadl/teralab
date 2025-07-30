@@ -25,8 +25,8 @@ const NavigationBar = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <div className="text-white">
-              <div className="text-sm font-light">House of</div>
-              <div className="text-2xl font-serif italic">Idlies</div>
+              <div className="text-sm font-light">Tera</div>
+              <div className="text-2xl font-serif italic">Lab</div>
             </div>
           </Link>
 
