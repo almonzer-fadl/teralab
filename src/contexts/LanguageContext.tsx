@@ -4,7 +4,7 @@ import React, { createContext, useContext, useState, useEffect, ReactNode } from
 
 // Define types
 interface TranslationData {
-  [key: string]: any;
+  [key: string]: string | TranslationData;
 }
 
 interface LanguageContextType {
@@ -60,13 +60,17 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
 
   const t = (key: string): string => {
     const keys = key.split('.');
-    let value: any = translations[locale];
+    let value: string | TranslationData = translations[locale];
     
     for (const k of keys) {
-      value = value?.[k];
+      if (typeof value === 'object' && value !== null) {
+        value = value[k];
+      } else {
+        return key;
+      }
     }
     
-    return value || key;
+    return typeof value === 'string' ? value : key;
   };
 
   const toggleLanguage = (): void => {
