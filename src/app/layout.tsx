@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tera lab",
-  description: "Tera lab",
+  title: "TeraLab - Auto Repair Shop Consulting | Tera Motors",
+  description: "TeraLab provides comprehensive consulting services for auto repair shop development, training, and optimization. Transform your workshop with expert guidance from Tera Motors.",
 };
 
 export default function RootLayout({

@@ -7,6 +7,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 interface Slide {
   id: number;
   title: string;
+  subtitle?: string;
   backgroundImage: string;
   description?: string;
 }
@@ -25,18 +26,21 @@ const HeroSlider = () => {
     {
       id: 1,
       title: t('hero.slide1.title'),
+      subtitle: t('hero.slide1.subtitle'),
       backgroundImage: "/hero-bg-1.jpg",
       description: t('hero.slide1.description')
     },
     {
       id: 2,
       title: t('hero.slide2.title'),
+      subtitle: t('hero.slide2.subtitle'),
       backgroundImage: "/hero-bg-2.jpg",
       description: t('hero.slide2.description')
     },
     {
       id: 3,
       title: t('hero.slide3.title'),
+      subtitle: t('hero.slide3.subtitle'),
       backgroundImage: "/hero-bg-3.jpg",
       description: t('hero.slide3.description')
     }
@@ -216,17 +220,20 @@ const HeroSlider = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full transition-colors duration-200"
             >
-              <span>{t('hero.orderNow')}</span>
+              <span>{currentSlide === 0 ? t('hero.exploreNow') : currentSlide === 1 ? t('hero.learnMore') : t('hero.getStarted')}</span>
               <ArrowRight size={20} />
             </a>
-            
-            <button className="inline-flex items-center gap-2 text-white hover:text-orange-300 transition-colors duration-200">
-              <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center">
-                <Play size={20} className="ml-1" />
-              </div>
-              <span>{t('hero.watchStory')}</span>
-            </button>
           </div>
+        </div>
+
+        {/* Watch Story Button - Positioned left bottom */}
+        <div className="absolute left-8 bottom-8">
+          <button className="inline-flex items-center gap-2 text-white hover:text-orange-300 transition-colors duration-200">
+            <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center">
+              <Play size={16} className="ml-1" />
+            </div>
+            <span className="hidden md:block">{t('about.title')}</span>
+          </button>
         </div>
 
 

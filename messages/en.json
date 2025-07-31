@@ -1,26 +1,63 @@
 {
   "nav": {
     "home": "Home",
-    "idlies": "Idlies",
-    "bowld": "Bowl'd",
-    "dunkd": "Dunk'd",
-    "dailyeeSides": "Dailee Sides"
+    "solutions": "Solutions",
+    "about": "About",
+    "contact": "Contact",
+    "pricing": "Pricing"
   },
   "hero": {
     "slide1": {
-      "title": "Healthy Idlies Podified",
-      "description": "Experience the authentic taste of South Indian cuisine"
+      "title": "Strategic Auto Repair Consulting",
+      "subtitle": "Transform Your Workshop",
+      "description": "Expert guidance for auto repair shop success"
     },
     "slide2": {
-      "title": "Matka Thayir Sadham",
-      "description": "Traditional curd rice with a modern twist"
+      "title": "Expert Staff Development",
+      "subtitle": "Build Your Dream Team",
+      "description": "Comprehensive training for workshop excellence"
     },
     "slide3": {
-      "title": "Fresh & Authentic",
-      "description": "Made with love and traditional recipes"
+      "title": "Complete Workshop Solutions",
+      "subtitle": "From Concept to Reality",
+      "description": "End-to-end workshop development and optimization"
     },
-    "orderNow": "Order Now",
-    "watchStory": "Watch Our Story"
+    "exploreNow": "Explore Solutions",
+    "learnMore": "Learn More",
+    "getStarted": "Get Started"
+  },
+  "solutions": {
+    "title": "Our Solutions",
+    "strategic": {
+      "title": "Strategic Planning",
+      "description": "Business analysis and market research for workshop success"
+    },
+    "training": {
+      "title": "Training Programs",
+      "description": "Staff development and operational excellence training"
+    },
+    "implementation": {
+      "title": "Workshop Implementation",
+      "description": "Complete facility design and construction services"
+    },
+    "marketing": {
+      "title": "Marketing Solutions",
+      "description": "Digital and traditional marketing for auto repair shops"
+    },
+    "equipment": {
+      "title": "Equipment Procurement",
+      "description": "Sourcing and installation of automotive equipment"
+    }
+  },
+  "about": {
+    "title": "About TeraLab",
+    "subtitle": "Transforming Auto Repair Excellence",
+    "description": "Under Tera Motors, TeraLab delivers comprehensive consulting services for auto repair shop development and optimization."
+  },
+  "contact": {
+    "title": "Book Your Consultation",
+    "subtitle": "Start Your Transformation Journey",
+    "description": "Schedule a consultation to discuss your auto repair shop needs"
   },
   "common": {
     "loading": "Loading...",
@@ -30,5 +67,27 @@
   "language": {
     "english": "English",
     "arabic": "العربية"
+  },
+  "whatsapp": {
+    "baseMessage": "Hello TeraLab! I'm interested in your auto repair consulting services.",
+    "serviceInterest": "I would like to learn more about your solutions.",
+    "ariaLabel": "Contact us on WhatsApp"
+  },
+  "slider": {
+    "storyOnWheels": "Excellence on Wheels",
+    "storyOnWheelsAlt": "Innovation in Motion"
+  },
+  "motion": {
+    "badge": {
+      "bornFrom": "BORN FROM",
+      "expertise": "EXPERTISE",
+      "madeBy": "MADE BY",
+      "experience": "EXPERIENCE"
+    },
+    "title": {
+      "line1": "Expert guidance, Professional service",
+      "line2": "& Results driven"
+    },
+    "description": "The comprehensive auto repair consulting that transforms workshops, is now available for all to experience. With years of industry expertise at its core, and a team of automotive professionals coming together, TeraLab embodies the spirit of innovation, excellence, and customer success. It operates with the precision of experts and delivers with the commitment of professionals."
   }
 }

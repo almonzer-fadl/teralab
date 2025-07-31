@@ -12,10 +12,10 @@ const NavigationBar = () => {
 
   const navItems = [
     { href: '/', label: t('nav.home'), isActive: true },
-    { href: '/idlies', label: t('nav.idlies') },
-    { href: '/bowld', label: t('nav.bowld') },
-    { href: '/dunkd', label: t('nav.dunkd') },
-    { href: '/dailyee-sides', label: t('nav.dailyeeSides') },
+    { href: '/solutions', label: t('nav.solutions') },
+    { href: '/about', label: t('nav.about') },
+    { href: '/contact', label: t('nav.contact') },
+    { href: '/pricing', label: t('nav.pricing') },
   ];
 
   return (
