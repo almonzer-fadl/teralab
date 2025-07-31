@@ -57,11 +57,10 @@ const SliderTwo = () => {
         }}
       >
         <img 
-          src="https://uploads-ssl.webflow.com/6151b624205630b02dd2aa77/616d3a570c6cdf74605253d2_Idli-image.png"
+          src="https://images.unsplash.com/photo-1563720223185-11003d516935?w=500&h=500&fit=crop&crop=center"
           loading="lazy"
           width="250"
           sizes="250px"
-          srcSet="https://uploads-ssl.webflow.com/6151b624205630b02dd2aa77/616d3a570c6cdf74605253d2_Idli-image-p-500.png 500w, https://uploads-ssl.webflow.com/6151b624205630b02dd2aa77/616d3a570c6cdf74605253d2_Idli-image.png 786w"
           alt="Auto repair workshop equipment"
           className="image-scroll w-64 h-64 object-cover rounded-lg shadow-2xl"
         />
@@ -71,11 +70,10 @@ const SliderTwo = () => {
         </h1>
         
         <img 
-          src="https://uploads-ssl.webflow.com/6151b624205630b02dd2aa77/616d3a570c6cdf74605253d2_Idli-image.png"
+          src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=500&h=500&fit=crop&crop=center"
           loading="lazy"
           width="250"
           sizes="250px"
-          srcSet="https://uploads-ssl.webflow.com/6151b624205630b02dd2aa77/616d3a570c6cdf74605253d2_Idli-image-p-500.png 500w, https://uploads-ssl.webflow.com/6151b624205630b02dd2aa77/616d3a570c6cdf74605253d2_Idli-image.png 786w"
           alt="Auto repair workshop equipment"
           className="image-scroll w-64 h-64 object-cover rounded-lg shadow-2xl"
         />

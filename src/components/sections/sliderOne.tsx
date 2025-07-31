@@ -61,12 +61,11 @@ const SliderOne = () => {
         </h1>
         
         <img 
-          src="https://uploads-ssl.webflow.com/6151b624205630b02dd2aa77/616d2e8a5779dd38a044a7cc_girl%20on%20train.png"
+          src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=500&h=500&fit=crop&crop=center"
           loading="lazy"
           width="250"
           sizes="250px"
-          srcSet="https://uploads-ssl.webflow.com/6151b624205630b02dd2aa77/616d2e8a5779dd38a044a7cc_girl%20on%20train-p-500.png 500w, https://uploads-ssl.webflow.com/6151b624205630b02dd2aa77/616d2e8a5779dd38a044a7cc_girl%20on%20train.png 785w"
-          alt="Professional auto repair consulting"
+          alt="Professional auto repair workshop"
           className="girl-train w-64 h-64 object-cover rounded-lg shadow-2xl"
         />
         

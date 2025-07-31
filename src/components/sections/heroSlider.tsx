@@ -27,21 +27,21 @@ const HeroSlider = () => {
       id: 1,
       title: t('hero.slide1.title'),
       subtitle: t('hero.slide1.subtitle'),
-      backgroundImage: "/hero-bg-1.jpg",
+      backgroundImage: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=1920&h=1080&fit=crop&crop=center",
       description: t('hero.slide1.description')
     },
     {
       id: 2,
       title: t('hero.slide2.title'),
       subtitle: t('hero.slide2.subtitle'),
-      backgroundImage: "/hero-bg-2.jpg",
+      backgroundImage: "https://images.unsplash.com/photo-1563720223185-11003d516935?w=1920&h=1080&fit=crop&crop=center",
       description: t('hero.slide2.description')
     },
     {
       id: 3,
       title: t('hero.slide3.title'),
       subtitle: t('hero.slide3.subtitle'),
-      backgroundImage: "/hero-bg-3.jpg",
+      backgroundImage: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=1920&h=1080&fit=crop&crop=center",
       description: t('hero.slide3.description')
     }
   ];
