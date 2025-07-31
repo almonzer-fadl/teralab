@@ -89,5 +89,73 @@
       "line2": "& Results driven"
     },
     "description": "The comprehensive auto repair consulting that transforms workshops, is now available for all to experience. With years of industry expertise at its core, and a team of automotive professionals coming together, TeraLab embodies the spirit of innovation, excellence, and customer success. It operates with the precision of experts and delivers with the commitment of professionals."
+  },
+  "about": {
+    "title": "Our Story",
+    "description": "As the automotive industry evolved, our founders recognized the need for specialized consulting services that could transform traditional workshops into modern, efficient, and profitable businesses. How many workshop owners dreamed of streamlined operations, increased customer satisfaction, and sustainable growth? TeraLab is the love-child of automotive expertise and entrepreneurial vision.",
+    "seeStory": "See Our Story"
+  },
+  "solutions": {
+    "title": "Walk the Talk",
+    "feature1": {
+      "title": "Expert Consultation",
+      "description": "Professional guidance from industry veterans with decades of automotive experience"
+    },
+    "feature2": {
+      "title": "Quality Assurance",
+      "description": "Rigorous standards and proven methodologies to ensure workshop excellence"
+    },
+    "feature3": {
+      "title": "Team Collaboration",
+      "description": "Building strong partnerships with workshop owners and their teams"
+    },
+    "feature4": {
+      "title": "Original Solutions",
+      "description": "Custom strategies tailored to each workshop's unique needs and challenges"
+    },
+    "feature5": {
+      "title": "Green Practices",
+      "description": "Sustainable solutions that benefit both business and environment"
+    },
+    "feature6": {
+      "title": "Innovation Focus",
+      "description": "Cutting-edge technologies and modern approaches to auto repair"
+    }
+  },
+  "brands": {
+    "title": "Order Online",
+    "subtitle": "Connect with us through your preferred platform",
+    "whatsapp": {
+      "description": "Direct messaging for quick consultations and support"
+    },
+    "instagram": {
+      "description": "Follow our latest projects and automotive insights"
+    },
+    "email": {
+      "description": "Professional communication for detailed inquiries"
+    },
+    "additionalInfo": "Choose your preferred way to connect with our automotive experts",
+    "feature1": "24/7 Support",
+    "feature2": "Expert Consultation",
+    "feature3": "Quick Response"
+  },
+  "footer": {
+    "description": "Leading automotive consulting services that transform workshops into successful businesses.",
+    "info": "Information",
+    "team": "Team",
+    "contact": "Contact",
+    "careers": "Careers",
+    "subscribe": "Subscribe with Us",
+    "services": "Services",
+    "solutions": "Solutions",
+    "consulting": "Consulting",
+    "training": "Training",
+    "marketing": "Marketing",
+    "contactInfo": "Contact Info",
+    "rightsReserved": "All Rights Reserved",
+    "designedBy": "Designed by",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "cookies": "Cookies Policy"
   }
 }

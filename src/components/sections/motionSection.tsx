@@ -68,7 +68,7 @@ const MotionSection = () => {
       {/* Left Element - Large Jar */}
       <div 
         ref={leftElementRef}
-        className="absolute -left-10 bottom-30"
+        className="absolute left-0 bottom-30"
         style={{
           willChange: 'transform',
           transformStyle: 'preserve-3d'
@@ -130,7 +130,7 @@ const MotionSection = () => {
       {/* Right Element - Large Spice Box */}
       <div 
         ref={rightElementRef}
-        className="absolute -right-50 top-1/2 transform -translate-y-1/2"
+        className="absolute right-0 top-1/2 transform -translate-y-1/2"
         style={{
           willChange: 'transform',
           transformStyle: 'preserve-3d'
