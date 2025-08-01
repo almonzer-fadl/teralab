@@ -18,12 +18,12 @@ const About = () => {
           
           {/* Left Content - Text */}
           <div className="lg:w-1/2 lg:pr-12 mb-12 lg:mb-0">
-            <h2 className="text-5xl md:text-7xl font-serif text-white leading-tight mb-8">
+            <h2 className="text-3xl md:text-5xl font-serif text-white leading-tight mb-8">
               {t('about.title')}
               <div className="w-24 h-1 bg-orange-500 mt-4"></div>
             </h2>
             
-            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-8">
+            <p className="text-xl md:text-xl text-gray-300 leading-relaxed mb-8">
               {t('about.description')}
             </p>
             

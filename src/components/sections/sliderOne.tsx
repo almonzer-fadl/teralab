@@ -34,7 +34,7 @@ const SliderOne = () => {
     ));
 
     // Apply horizontal scroll animation
-    const translateX = scrollProgress * 300;
+    const translateX = scrollProgress * 250;
     animation.style.transform = `translate3d(${translateX}px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`;
   }, [scrollY]);
 
@@ -63,17 +63,17 @@ const SliderOne = () => {
         <img 
           src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=500&h=500&fit=crop&crop=center"
           loading="lazy"
-          width="250"
-          sizes="250px"
+          width="200"
+          sizes="200px"
           alt="Professional auto repair workshop"
-          className="girl-train w-64 h-64 object-cover rounded-lg shadow-2xl"
+          className="girl-train w-36 h-36 object-cover rounded-lg shadow-2xl"
         />
         
         <h1 className="scroll-header text-6xl md:text-8xl font-serif text-white whitespace-nowrap">
           {t('slider.storyOnWheels')}
         </h1>
       </div>
-    </section>
+    </section>  
   );
 };
 

@@ -68,7 +68,7 @@ const MotionSection = () => {
       {/* Left Element - Large Jar */}
       <div 
         ref={leftElementRef}
-        className="absolute left-0 bottom-30"
+        className="absolute -left-20 bottom-30"
         style={{
           willChange: 'transform',
           transformStyle: 'preserve-3d'
@@ -77,7 +77,7 @@ const MotionSection = () => {
         <img 
           src="https://uploads-ssl.webflow.com/6151b624205630b02dd2aa77/6157038e139ffa0c51f3901a_jar.png"
           alt="Professional auto repair tools"
-          className="w-64 h-64 object-contain"
+          className="w-75 h-75 object-contain"
           style={{
             willChange: 'transform',
             transformStyle: 'preserve-3d',
@@ -96,10 +96,9 @@ const MotionSection = () => {
             <div className="mb-8 flex justify-center">
               <div className="relative w-32 h-32 bg-orange-500 rounded-full flex items-center justify-center shadow-2xl border-4 border-orange-400">
                 <div className="text-center text-white text-xs font-bold leading-tight">
-                  <div className="mb-1 text-[10px] tracking-wider">{t('motion.badge.bornFrom')}</div>
                   <div className="mb-2 text-[10px] tracking-wider">{t('motion.badge.expertise')}</div>
                   {/* Wrench icon for auto repair */}
-                  <div className="w-6 h-6 mx-auto mb-2">
+                  <div className="w-7 h-7 mx-auto mb-2">
                     <svg className="w-full h-full text-white" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/>
                     </svg>
@@ -112,7 +111,7 @@ const MotionSection = () => {
               </div>
             </div>
 
-            <h2 className="text-5xl md:text-7xl font-serif text-white leading-tight mb-8">
+            <h2 className="text-3xl md:text-5xl font-serif text-white leading-tight mb-8">
               <span className="block font-bold">{t('motion.title.line1')}</span>
               <span className="block text-orange-500 relative">
                 {t('motion.title.line2')}
@@ -120,7 +119,7 @@ const MotionSection = () => {
               </span>
             </h2>
             
-            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-xl md:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
               {t('motion.description')}
             </p>
           </div>
@@ -130,7 +129,7 @@ const MotionSection = () => {
       {/* Right Element - Large Spice Box */}
       <div 
         ref={rightElementRef}
-        className="absolute right-0 top-1/2 transform -translate-y-1/2"
+        className="absolute -right-50 top-1/2 transform -translate-y-1/2"
         style={{
           willChange: 'transform',
           transformStyle: 'preserve-3d'

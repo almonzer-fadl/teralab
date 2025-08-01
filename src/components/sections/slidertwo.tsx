@@ -34,7 +34,7 @@ const SliderTwo = () => {
     ));
 
     // Apply horizontal scroll animation
-    const translateX = scrollProgress * -300;
+    const translateX = scrollProgress * -250;
     animation.style.transform = `translate3d(${translateX}px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`;
   }, [scrollY]);
 
@@ -59,10 +59,10 @@ const SliderTwo = () => {
         <img 
           src="https://images.unsplash.com/photo-1563720223185-11003d516935?w=500&h=500&fit=crop&crop=center"
           loading="lazy"
-          width="250"
-          sizes="250px"
+          width="200"
+          sizes="200px"
           alt="Auto repair workshop equipment"
-          className="image-scroll w-64 h-64 object-cover rounded-lg shadow-2xl"
+          className="image-scroll w-36 h-36 object-cover rounded-lg shadow-2xl"
         />
         
         <h1 className="scroll-header text-6xl md:text-8xl font-serif text-white whitespace-nowrap">
@@ -72,10 +72,10 @@ const SliderTwo = () => {
         <img 
           src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=500&h=500&fit=crop&crop=center"
           loading="lazy"
-          width="250"
-          sizes="250px"
+          width="200"
+          sizes="200px"
           alt="Auto repair workshop equipment"
-          className="image-scroll w-64 h-64 object-cover rounded-lg shadow-2xl"
+          className="image-scroll w-36 h-36 object-cover rounded-lg shadow-2xl"
         />
         
         <h1 className="scroll-header text-6xl md:text-8xl font-serif text-white whitespace-nowrap">

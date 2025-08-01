@@ -27,21 +27,21 @@ const HeroSlider = () => {
       id: 1,
       title: t('hero.slide1.title'),
       subtitle: t('hero.slide1.subtitle'),
-      backgroundImage: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=1920&h=1080&fit=crop&crop=center",
+      backgroundImage: "/images/hero/hero-1.jpg",
       description: t('hero.slide1.description')
     },
     {
       id: 2,
       title: t('hero.slide2.title'),
       subtitle: t('hero.slide2.subtitle'),
-      backgroundImage: "https://images.unsplash.com/photo-1563720223185-11003d516935?w=1920&h=1080&fit=crop&crop=center",
-      description: t('hero.slide2.description')
+        backgroundImage: "/images/hero/hero-2.jpg",
+        description: t('hero.slide2.description')
     },
     {
       id: 3,
       title: t('hero.slide3.title'),
       subtitle: t('hero.slide3.subtitle'),
-      backgroundImage: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=1920&h=1080&fit=crop&crop=center",
+      backgroundImage: "/images/hero/hero-3.jpg",
       description: t('hero.slide3.description')
     }
   ];
@@ -175,16 +175,18 @@ const HeroSlider = () => {
       {slides.map((slide, index) => (
         <div
           key={slide.id}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentSlide ? 'opacity-100' : 'opacity-0'
+          className={`absolute inset-0 transition-transform duration-1000 ease-in-out ${
+            index === currentSlide ? 'translateX(0)' : 'translateX(100%)'
           }`}
           style={{
             backgroundImage: `url(${slide.backgroundImage})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
-            transform: isDragging ? `translateX(${translateX}px)` : 'translateX(0)',
-            transition: isDragging ? 'none' : 'transform 0.3s ease-out'
+            transform: isDragging ? `translateX(${translateX}px)` : 
+              index === currentSlide ? 'translateX(0)' : 
+              index < currentSlide ? 'translateX(-100%)' : 'translateX(100%)',
+            transition: isDragging ? 'none' : 'transform 0.8s ease-in-out'
           }}
         >
           {/* Dark overlay */}
@@ -194,10 +196,10 @@ const HeroSlider = () => {
 
       {/* Content */}
       <div 
-        className="relative z-10 flex flex-col justify-center items-center h-full text-white px-4"
+        className="relative z-10 flex flex-col justify-center items-center h-full text-white px-4 transition-transform duration-1000 ease-in-out"
         style={{
           transform: isDragging ? `translateX(${translateX * 0.1}px)` : 'translateX(0)',
-          transition: isDragging ? 'none' : 'transform 0.3s ease-out'
+          transition: isDragging ? 'none' : 'transform 0.8s ease-in-out'
         }}
       >
         {/* Main Content */}
