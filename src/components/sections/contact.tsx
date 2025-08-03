@@ -45,7 +45,7 @@ const Contact = () => {
             </div>
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-white/80">{t('contact.form.message')}</label>
-              <textarea id="message" name="message" rows="4" className="mt-1 block w-full px-4 py-2 bg-gray-800/20 border border-gray-700 rounded-md text-white focus:ring-orange-500 focus:border-orange-500"></textarea>
+              <textarea id="message" name="message" rows={4} className="mt-1 block w-full px-4 py-2 bg-gray-800/20 border border-gray-700 rounded-md text-white focus:ring-orange-500 focus:border-orange-500"></textarea>
             </div>
             <div>
               <button type="submit" className="w-full py-3 px-4 bg-orange-500 text-white font-bold rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">{t('contact.form.submit')}</button>
