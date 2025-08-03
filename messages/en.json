@@ -47,17 +47,92 @@
     "equipment": {
       "title": "Equipment Procurement",
       "description": "Sourcing and installation of automotive equipment"
+    },
+    "feature1": {
+      "title": "Feature 1",
+      "description": "Description for feature 1"
+    },
+    "feature2": {
+      "title": "Feature 2",
+      "description": "Description for feature 2"
+    },
+    "feature3": {
+      "title": "Feature 3",
+      "description": "Description for feature 3"
+    },
+    "feature4": {
+      "title": "Feature 4",
+      "description": "Description for feature 4"
+    },
+    "feature5": {
+      "title": "Feature 5",
+      "description": "Description for feature 5"
+    },
+    "feature6": {
+      "title": "Feature 6",
+      "description": "Description for feature 6"
     }
   },
   "about": {
     "title": "About TeraLab",
     "subtitle": "Transforming Auto Repair Excellence",
-    "description": "Under Tera Motors, TeraLab delivers comprehensive consulting services for auto repair shop development and optimization."
+    "description": "Under Tera Motors, TeraLab delivers comprehensive consulting services for auto repair shop development and optimization.",
+    "storyTitle": "Our Story",
+    "missionTitle": "Our Mission",
+    "missionDescription": "To empower auto repair workshops with the knowledge, tools, and strategies to achieve operational excellence and sustainable growth.",
+    "visionTitle": "Our Vision",
+    "visionDescription": "To be the leading consultancy for the auto repair industry, known for our expertise, integrity, and commitment to our clients' success.",
+    "teamTitle": "Our Team",
+    "teamDescription": "Our team is comprised of industry veterans, master technicians, and business strategists, all dedicated to helping you succeed."
   },
   "contact": {
     "title": "Book Your Consultation",
     "subtitle": "Start Your Transformation Journey",
-    "description": "Schedule a consultation to discuss your auto repair shop needs"
+    "description": "Schedule a consultation to discuss your auto repair shop needs",
+    "infoTitle": "Contact Information",
+    "infoDescription": "Fill out the form and our team will get back to you within 24 hours.",
+    "email": "contact@teralab.com",
+    "phone": "+1 (555) 123-4567",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Send Message"
+    }
+  },
+  "pricing": {
+    "basic": {
+      "title": "Basic",
+      "price": "$49",
+      "description": "For small workshops and startups",
+      "features": [
+        "Strategic Planning Session",
+        "Basic Staff Training",
+        "Email Support"
+      ]
+    },
+    "pro": {
+      "title": "Pro",
+      "price": "$99",
+      "description": "For growing workshops",
+      "features": [
+        "Everything in Basic",
+        "Advanced Staff Training",
+        "Marketing & Branding Support",
+        "Priority Email Support"
+      ]
+    },
+    "enterprise": {
+      "title": "Enterprise",
+      "price": "Custom",
+      "description": "For large, established workshops",
+      "features": [
+        "Everything in Pro",
+        "Complete Workshop Implementation",
+        "Equipment Procurement",
+        "24/7 Phone & Email Support"
+      ]
+    }
   },
   "common": {
     "loading": "Loading...",
@@ -89,38 +164,6 @@
       "line2": "& Results driven"
     },
     "description": "The comprehensive auto repair consulting that transforms workshops, is now available for all to experience. With years of industry expertise at its core, and a team of automotive professionals coming together, TeraLab embodies the spirit of innovation, excellence, and customer success. It operates with the precision of experts and delivers with the commitment of professionals."
-  },
-  "about": {
-    "title": "Our Story",
-    "description": "As the automotive industry evolved, our founders recognized the need for specialized consulting services that could transform traditional workshops into modern, efficient, and profitable businesses. How many workshop owners dreamed of streamlined operations, increased customer satisfaction, and sustainable growth? TeraLab is the love-child of automotive expertise and entrepreneurial vision.",
-    "seeStory": "See Our Story"
-  },
-  "solutions": {
-    "title": "Walk the Talk",
-    "feature1": {
-      "title": "Expert Consultation",
-      "description": "Professional guidance from industry veterans with decades of automotive experience"
-    },
-    "feature2": {
-      "title": "Quality Assurance",
-      "description": "Rigorous standards and proven methodologies to ensure workshop excellence"
-    },
-    "feature3": {
-      "title": "Team Collaboration",
-      "description": "Building strong partnerships with workshop owners and their teams"
-    },
-    "feature4": {
-      "title": "Original Solutions",
-      "description": "Custom strategies tailored to each workshop's unique needs and challenges"
-    },
-    "feature5": {
-      "title": "Green Practices",
-      "description": "Sustainable solutions that benefit both business and environment"
-    },
-    "feature6": {
-      "title": "Innovation Focus",
-      "description": "Cutting-edge technologies and modern approaches to auto repair"
-    }
   },
   "brands": {
     "title": "Order Online",
