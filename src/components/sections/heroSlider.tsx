@@ -17,6 +17,7 @@ const HeroSlider = () => {
   const { t } = useLanguage();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+  const [isNavigating, setIsNavigating] = useState(false);
   const [startX, setStartX] = useState(0);
   const [currentX, setCurrentX] = useState(0);
   const [translateX, setTranslateX] = useState(0);
@@ -47,16 +48,25 @@ const HeroSlider = () => {
     }
   ];
 
-  // Auto-advance slides (pause during touch interaction)
+  // Auto-advance slides (pause during touch interaction and navigation)
   useEffect(() => {
-    if (isDragging) return;
+    if (isDragging || isNavigating) return;
     
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 3000);
 
     return () => clearInterval(timer);
-  }, [slides.length, isDragging]);
+  }, [slides.length, isDragging, isNavigating]);
+
+  // Pause auto-advance when user interacts with buttons
+  const handleButtonClick = () => {
+    setIsNavigating(true);
+    // Reset navigation state after a short delay
+    setTimeout(() => {
+      setIsNavigating(false);
+    }, 500);
+  };
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
@@ -160,6 +170,15 @@ const HeroSlider = () => {
     };
   }, [isDragging]);
 
+  // Cleanup effect to reset slider state
+  useEffect(() => {
+    return () => {
+      setTranslateX(0);
+      setIsDragging(false);
+      setIsNavigating(false);
+    };
+  }, []);
+
   return (
     <div 
       ref={sliderRef}
@@ -236,28 +255,30 @@ const HeroSlider = () => {
             </p>
           )}
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            {index === 0 ? (
-              // Workshop Solutions slide - link to AI Assistant
-              <Link
-                href="/ai-assistant"
-                className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full transition-colors duration-200"
-              >
-                <span>Start AI Planning</span>
-                <ArrowRight size={20} />
-              </Link>
-            ) : (
-              // Staff Development and Consulting slides - link to Solutions
-              <Link
-                href="/solutions"
-                className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full transition-colors duration-200"
-              >
-                <span>{index === 1 ? 'Explore Staff Solutions' : 'View Consulting Services'}</span>
-                <ArrowRight size={20} />
-              </Link>
-            )}
-          </div>
+                      {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              {index === 0 ? (
+                // Workshop Solutions slide - link to AI Assistant
+                <Link
+                  href="/ai-assistant"
+                  className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full transition-colors duration-200"
+                  onClick={handleButtonClick}
+                >
+                  <span>Start AI Planning</span>
+                  <ArrowRight size={20} />
+                </Link>
+              ) : (
+                // Staff Development and Consulting slides - link to Solutions
+                <Link
+                  href="/solutions"
+                  className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full transition-colors duration-200"
+                  onClick={handleButtonClick}
+                >
+                  <span>{index === 1 ? 'Explore Staff Solutions' : 'View Consulting Services'}</span>
+                  <ArrowRight size={20} />
+                </Link>
+              )}
+            </div>
         </div>
 
         {/* Watch Story Button - Positioned left bottom */}
