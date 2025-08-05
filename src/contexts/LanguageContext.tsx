@@ -10,7 +10,7 @@ interface TranslationData {
 interface LanguageContextType {
   locale: string;
   direction: 'ltr' | 'rtl';
-  t: (key: string) => string;
+  t: (key: string, options?: { returnObjects?: boolean }) => string | any;
   toggleLanguage: () => void;
   setLocale: (locale: string) => void;
 }
@@ -58,7 +58,7 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
     }
   }, []);
 
-  const t = (key: string): string => {
+  const t = (key: string, options?: { returnObjects?: boolean }): string | any => {
     const keys = key.split('.');
     let value: string | TranslationData = translations[locale];
     
@@ -70,6 +70,12 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
       }
     }
     
+    // If returnObjects is true, return the value as is (could be array, object, or string)
+    if (options?.returnObjects) {
+      return value;
+    }
+    
+    // Otherwise, return as string
     return typeof value === 'string' ? value : key;
   };
 

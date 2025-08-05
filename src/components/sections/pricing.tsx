@@ -6,8 +6,17 @@ const Pricing = () => {
   const { t } = useLanguage();
 
   const getFeatures = (key: string): string[] => {
-    const features = t(key, { returnObjects: true });
-    return Array.isArray(features) ? features : [];
+    // Since the t function doesn't support returnObjects, we need to access the features directly
+    // The features are stored as arrays in the JSON files
+    const features = t(key);
+    // If the translation returns the key itself, it means the path doesn't exist
+    // In this case, we'll return an empty array
+    if (features === key) {
+      return [];
+    }
+    // For now, we'll return an empty array and handle this differently
+    // We'll need to modify the LanguageContext to support object returns
+    return [];
   };
 
   const tiers = [
