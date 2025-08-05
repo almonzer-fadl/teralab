@@ -9,6 +9,7 @@ import About from '@/components/sections/about';
 import Solutions from '@/components/sections/solutions';
 import Brands from '@/components/sections/brands';
 import Footer from '@/components/sections/footer';
+import AIPopupWrapper from '@/components/AIPopupWrapper';
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <Solutions/>
       <Brands/>
       <Footer/>
+      <AIPopupWrapper />
     </main>
   );
 } 
