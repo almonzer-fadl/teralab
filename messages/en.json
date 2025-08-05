@@ -28,25 +28,179 @@
   },
   "solutions": {
     "title": "Our Solutions",
-    "strategic": {
-      "title": "Strategic Planning",
-      "description": "Business analysis and market research for workshop success"
+    "description": "Comprehensive automotive consulting services designed to transform your workshop into a thriving business.",
+    "learnMore": "Learn More",
+    "feature1": {
+      "title": "Expert Consultation",
+      "description": "Professional guidance from industry veterans with decades of automotive experience"
     },
-    "training": {
-      "title": "Training Programs",
-      "description": "Staff development and operational excellence training"
+    "feature2": {
+      "title": "Quality Assurance",
+      "description": "Rigorous standards and proven methodologies to ensure workshop excellence"
     },
-    "implementation": {
-      "title": "Workshop Implementation",
-      "description": "Complete facility design and construction services"
+    "feature3": {
+      "title": "Team Collaboration",
+      "description": "Building strong partnerships with workshop owners and their teams"
     },
-    "marketing": {
-      "title": "Marketing Solutions",
-      "description": "Digital and traditional marketing for auto repair shops"
+    "feature4": {
+      "title": "Original Solutions",
+      "description": "Custom strategies tailored to each workshop's unique needs and challenges"
     },
-    "equipment": {
-      "title": "Equipment Procurement",
-      "description": "Sourcing and installation of automotive equipment"
+    "feature5": {
+      "title": "Green Practices",
+      "description": "Sustainable solutions that benefit both business and environment"
+    },
+    "feature6": {
+      "title": "Innovation Focus",
+      "description": "Cutting-edge technologies and modern approaches to auto repair"
+    },
+    "aiServices": {
+      "payment": {
+        "title": "Integrated Online Payment",
+        "description": "Accept payments from your customers securely through our integrated Stripe solution"
+      },
+      "booking": {
+        "title": "Smart Appointment Booking",
+        "description": "An automated booking system that integrates with your calendar and sends reminders"
+      },
+      "planning": {
+        "title": "AI Workshop Planning Assistant",
+        "description": "Let our AI design a complete workshop layout, equipment list, and financial plan for you"
+      }
+    },
+    "features": {
+      "title": "Why Choose Our Solutions",
+      "description": "We combine cutting-edge technology with industry expertise to deliver exceptional results.",
+      "integration": {
+        "title": "End-to-End Integration",
+        "description": "Seamless integration with your existing systems and workflows"
+      },
+      "expertise": {
+        "title": "Expert Guidance",
+        "description": "Real-world expertise and proven strategies from industry veterans"
+      },
+      "ai": {
+        "title": "AI-Powered",
+        "description": "Intelligent automation and smart solutions for your workshop"
+      }
+    },
+    "cta": {
+      "title": "Ready to Transform Your Workshop?",
+      "description": "Join hundreds of successful workshop owners who have transformed their businesses with our solutions.",
+      "button": "Get Started Today"
+    },
+    "contactInfo": {
+      "title": "Contact Information",
+      "email": {
+        "label": "Email",
+        "value": "info@teralab.com"
+      },
+      "phone": {
+        "label": "Phone",
+        "value": "123-4567 (555) 1+"
+      },
+      "location": {
+        "label": "Location",
+        "value": "Dubai, UAE"
+      }
+    },
+    "services": {
+      "aiWorkshopPlanning": {
+        "title": "AI Workshop Planning Assistant",
+        "intro": "Let our AI design a complete workshop layout, equipment list, and financial plan for you."
+      },
+      "smartAppointmentBooking": {
+        "title": "Smart Appointment Booking",
+        "intro": "An automated booking system that integrates with your calendar and sends reminders."
+      },
+      "integratedOnlinePayment": {
+        "title": "Integrated Online Payment",
+        "intro": "Accept payments from your customers securely through our integrated Stripe solution."
+      },
+      "oneTimeConsulting": {
+        "title": "One-Time Consulting Services",
+        "intro": "Get expert advice on any aspect of your workshop business, from marketing to operations."
+      },
+      "fullExecution": {
+        "title": "Full Execution of Workshop Plans",
+        "intro": "We take your AI-generated plan and turn it into a reality, managing the entire setup process."
+      },
+      "fieldAudit": {
+        "title": "Field Audit & Evaluation Trips",
+        "intro": "Our experts visit your workshop to provide a comprehensive audit and recommendations for improvement."
+      },
+      "staffingTraining": {
+        "title": "Staffing & Training Services",
+        "intro": "We help you find, hire, and train the right people for your workshop."
+      },
+      "equipmentProcurement": {
+        "title": "Equipment Procurement Agency",
+        "intro": "We source and procure the best equipment for your workshop at competitive prices."
+      },
+      "digitalLaunchPackage": {
+        "title": "Digital Launch Package",
+        "intro": "A complete package to launch your workshop online, including a website, social media, and Google My Business setup."
+      },
+      "aiExplainerVideo": {
+        "title": "AI Explainer Video & Onboarding",
+        "intro": "An AI-generated video to explain your services to customers and onboard new employees."
+      },
+      "preBuiltPackages": {
+        "title": "Pre-built Service Packages",
+        "intro": "Choose from our pre-built packages for launch, growth, and support."
+      },
+      "transparentPricing": {
+        "title": "Transparent Pricing Models",
+        "intro": "Clear and upfront pricing for all our services."
+      },
+      "tieredAccess": {
+        "title": "Tiered Access Communication",
+        "intro": "Choose your level of support with our tiered communication plans."
+      },
+      "aiRecommendation": {
+        "title": "AI-Powered Service Recommendation",
+        "intro": "Our AI recommends the best services for your workshop based on your needs."
+      },
+      "multipleAccessPoints": {
+        "title": "Multiple Access Points to AI Suite",
+        "intro": "Access our AI suite from anywhere, on any device."
+      },
+      "mobileWorkshopSetup": {
+        "title": "Mobile Workshop Setup",
+        "intro": "We help you set up a mobile workshop to serve customers on the go."
+      },
+      "cctvMonitoring": {
+        "title": "CCTV & Behavioral Monitoring Installations",
+        "intro": "Install CCTV and behavioral monitoring systems to improve security and efficiency."
+      },
+      "nightShiftEnablement": {
+        "title": "Night-Shift Enablement Services",
+        "intro": "We help you set up a night shift to maximize your workshop's productivity."
+      },
+      "digitalMysteryShopper": {
+        "title": "Digital Mystery Shopper Testing",
+        "intro": "Our digital mystery shoppers test your online presence and provide feedback for improvement."
+      },
+      "googleWebsiteMaintenance": {
+        "title": "Google + Website Maintenance Plans",
+        "intro": "Keep your website and Google My Business profile up-to-date with our maintenance plans."
+      },
+      "loyaltyPrograms": {
+        "title": "Workshop Loyalty Programs",
+        "intro": "Create a loyalty program to reward your customers and keep them coming back."
+      },
+      "ownerLeadershipCoaching": {
+        "title": "Owner Leadership Coaching",
+        "intro": "One-on-one coaching to help you become a more effective leader."
+      },
+      "customerFeedbackSurvey": {
+        "title": "Customer Feedback Survey Systems",
+        "intro": "Set up a system to collect and analyze customer feedback."
+      },
+      "professionalQuotationDesign": {
+        "title": "Professional Quotation Design Packs",
+        "intro": "Design professional quotations that will impress your customers."
+      }
     }
   },
   "about": {
@@ -95,33 +249,7 @@
     "description": "As the automotive industry evolved, our founders recognized the need for specialized consulting services that could transform traditional workshops into modern, efficient, and profitable businesses. How many workshop owners dreamed of streamlined operations, increased customer satisfaction, and sustainable growth? TeraLab is the love-child of automotive expertise and entrepreneurial vision.",
     "seeStory": "See Our Story"
   },
-  "solutions": {
-    "title": "Walk the Talk",
-    "feature1": {
-      "title": "Expert Consultation",
-      "description": "Professional guidance from industry veterans with decades of automotive experience"
-    },
-    "feature2": {
-      "title": "Quality Assurance",
-      "description": "Rigorous standards and proven methodologies to ensure workshop excellence"
-    },
-    "feature3": {
-      "title": "Team Collaboration",
-      "description": "Building strong partnerships with workshop owners and their teams"
-    },
-    "feature4": {
-      "title": "Original Solutions",
-      "description": "Custom strategies tailored to each workshop's unique needs and challenges"
-    },
-    "feature5": {
-      "title": "Green Practices",
-      "description": "Sustainable solutions that benefit both business and environment"
-    },
-    "feature6": {
-      "title": "Innovation Focus",
-      "description": "Cutting-edge technologies and modern approaches to auto repair"
-    }
-  },
+
   "brands": {
     "title": "Order Online",
     "subtitle": "Connect with us through your preferred platform",
@@ -157,5 +285,115 @@
     "privacy": "Privacy Policy",
     "terms": "Terms of Use",
     "cookies": "Cookies Policy"
+  },
+  "about": {
+    "title": "About Us",
+    "description": "TeraLab is an AI-powered hybrid SaaS & consulting company specializing in designing, launching, and optimizing auto repair workshops. Positioned as a premium arm of Tera Motors, the brand blends intelligent automation with real-world expertise.",
+    "mission": {
+      "title": "Our Mission",
+      "description": "Our mission is to transform the auto repair industry with intelligent guidance and end-to-end solutions, guiding entrepreneurs, investors, and existing workshop owners from concept to fully operational, profitable businesses."
+    },
+    "features": {
+      "ai": {
+        "title": "AI-Powered",
+        "description": "Intelligent automation and smart solutions"
+      },
+      "expertise": {
+        "title": "Expert Guidance", 
+        "description": "Real-world expertise and proven strategies"
+      },
+      "endToEnd": {
+        "title": "End-to-End",
+        "description": "Complete solutions from concept to operation"
+      }
+    },
+    "seeStory": "See Our Story"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "Get in touch with our team of automotive experts. We're here to help transform your workshop into a successful business.",
+    "info": {
+      "title": "Contact Information",
+      "email": {
+        "label": "Email",
+        "value": "info@teralab.com"
+      },
+      "phone": {
+        "label": "Phone",
+        "value": "123-4567 (555) 1+"
+      },
+      "location": {
+        "label": "Location",
+        "value": "Dubai, UAE"
+      }
+    },
+    "hours": {
+      "title": "Business Hours",
+      "mondayFriday": "Monday - Friday: 9:00 AM - 6:00 PM",
+      "saturday": "Saturday: 10:00 AM - 4:00 PM",
+      "sunday": "Sunday: Closed"
+    },
+    "form": {
+      "title": "Send us a Message",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email Address",
+      "subject": "Subject",
+      "message": "Your Message",
+      "send": "Send Message"
+    }
+  },
+  "pricing": {
+    "title": "Our Pricing",
+    "description": "Choose the perfect plan for your workshop transformation journey. We offer flexible solutions to meet your needs.",
+    "popular": "Most Popular",
+    "aiServices": {
+      "title": "AI-Powered Services",
+      "price": "$49",
+      "period": "per service",
+      "description": "Intelligent automation and smart solutions for your workshop",
+      "features": {
+        "planning": "AI Workshop Planning Assistant",
+        "booking": "Smart Appointment Booking",
+        "payment": "Integrated Online Payment",
+        "more": "And more..."
+      },
+      "button": "Choose Plan"
+    },
+    "consulting": {
+      "title": "Consulting Services",
+      "price": "Custom",
+      "period": "based on your needs",
+      "description": "One-time consulting services tailored to your workshop",
+      "features": {
+        "consulting": "One-Time Consulting Services",
+        "coaching": "Owner Leadership Coaching",
+        "more": "And more..."
+      },
+      "button": "Contact Us"
+    },
+    "fieldServices": {
+      "title": "Field Services",
+      "price": "Estimate",
+      "period": "based on project scope",
+      "description": "Full execution and implementation of workshop plans",
+      "features": {
+        "execution": "Full Execution of Workshop Plans",
+        "audit": "Field Audit & Evaluation Trips",
+        "more": "And more..."
+      },
+      "button": "Get a Quote"
+    },
+    "additional": {
+      "title": "Additional Information",
+      "customization": {
+        "title": "Customization",
+        "description": "All our services can be customized to meet your specific workshop requirements and business goals."
+      },
+      "support": {
+        "title": "Support & Maintenance",
+        "description": "We provide ongoing support and maintenance to ensure your workshop continues to operate at peak efficiency."
+      }
+    }
   }
 }

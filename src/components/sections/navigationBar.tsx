@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import LanguageSwitcher from './languageSwitcher';
@@ -9,13 +10,14 @@ import LanguageSwitcher from './languageSwitcher';
 const NavigationBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t } = useLanguage();
+  const pathname = usePathname();
 
   const navItems = [
-    { href: '/', label: t('nav.home'), isActive: true },
-    { href: '/solutions', label: t('nav.solutions') },
-    { href: '/about', label: t('nav.about') },
-    { href: '/contact', label: t('nav.contact') },
-    { href: '/pricing', label: t('nav.pricing') },
+    { href: '/', label: t('nav.home'), isActive: pathname === '/' },
+    { href: '/solutions', label: t('nav.solutions'), isActive: pathname === '/solutions' },
+    { href: '/about', label: t('nav.about'), isActive: pathname === '/about' },
+    { href: '/contact', label: t('nav.contact'), isActive: pathname === '/contact' },
+    { href: '/pricing', label: t('nav.pricing'), isActive: pathname === '/pricing' },
   ];
 
   return (
