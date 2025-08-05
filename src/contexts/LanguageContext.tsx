@@ -16,8 +16,8 @@ interface LanguageContextType {
 }
 
 // Import translation files
-import enTranslations from '@/messages/en.json';
-import arTranslations from '@/messages/ar.json';
+import enTranslations from '../../messages/en.json';
+import arTranslations from '../../messages/ar.json';
 
 const translations: Record<string, TranslationData> = {
   en: enTranslations,
