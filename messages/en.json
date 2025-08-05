@@ -251,21 +251,8 @@
   },
 
   "brands": {
-    "title": "Order Online",
-    "subtitle": "Connect with us through your preferred platform",
-    "whatsapp": {
-      "description": "Direct messaging for quick consultations and support"
-    },
-    "instagram": {
-      "description": "Follow our latest projects and automotive insights"
-    },
-    "email": {
-      "description": "Professional communication for detailed inquiries"
-    },
-    "additionalInfo": "Choose your preferred way to connect with our automotive experts",
-    "feature1": "24/7 Support",
-    "feature2": "Expert Consultation",
-    "feature3": "Quick Response"
+    "title": "Our Brands",
+    "subtitle": "Our brands represent innovation, excellence, and the future of automotive services"
   },
   "footer": {
     "description": "Leading automotive consulting services that transform workshops into successful businesses.",

@@ -6,18 +6,18 @@ const About = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="relative min-h-screen bg-black text-white overflow-hidden">
+    <section className="relative min-h-screen bg-black text-white overflow-hidden mb-0 pb-0">
       {/* Background Image - Train tracks at sunset */}
              <div 
          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
        />
       
       {/* Content Container */}
-      <div className="relative z-10 container mx-auto px-4 py-20">
+      <div className="relative z-10 container mx-auto px-4 py-20 mb-0 pb-0">
         <div className="flex flex-col lg:flex-row items-center min-h-screen">
           
           {/* Left Content - Text */}
-          <div className="lg:w-1/2 lg:pr-12 mb-12 lg:mb-0">
+          <div className="lg:w-1/2 lg:pr-12 mb-0 lg:mb-0">
             <h2 className="text-3xl md:text-5xl font-serif text-white leading-tight mb-8">
               {t('about.title')}
               <div className="w-24 h-1 bg-orange-500 mt-4"></div>

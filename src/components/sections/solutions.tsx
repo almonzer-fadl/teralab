@@ -63,7 +63,7 @@ const Solutions = () => {
   ];
 
   return (
-    <section className="relative min-h-screen bg-black text-white overflow-hidden">
+    <section className="relative min-h-screen bg-black text-white overflow-hidden mt-0 pt-0">
       {/* Background Circular Elements - Full circles like in the image */}
       <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-orange-500/10 rounded-full pointer-events-none" style={{ transform: 'translate(-50%, -50%)' }}></div>
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-orange-500/10 rounded-full pointer-events-none" style={{ transform: 'translate(50%, 50%)' }}></div>

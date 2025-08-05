@@ -215,70 +215,62 @@ const HeroSlider = () => {
       ))}
 
       {/* Content */}
-      {slides.map((slide, index) => (
-        <div
-          key={slide.id}
-          className="absolute inset-0 z-10 flex flex-col justify-center items-center h-full text-white px-4 transition-transform duration-1000 ease-in-out"
-          style={{
-            transform: isDragging ? `translateX(${translateX * 0.1}px)` : 
-              index === currentSlide ? 'translateX(0)' : 
-              index < currentSlide ? 'translateX(-100%)' : 'translateX(100%)',
-            transition: isDragging ? 'none' : 'transform 0.8s ease-in-out'
-          }}
-        >
+      <div 
+        className="relative z-10 flex flex-col justify-center items-center h-full text-white px-4"
+      >
         {/* Main Content */}
         <div className="text-center max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-serif mb-6">
-            {slide.title}
+            {slides[currentSlide].title}
           </h1>
           
-          {slide.description && (
+          {slides[currentSlide].description && (
             <p className="text-xl md:text-2xl mb-8 opacity-90">
-              {slide.description}
+              {slides[currentSlide].description}
             </p>
           )}
           
           {/* Additional descriptive text based on slide */}
-          {index === 0 && (
+          {currentSlide === 0 && (
             <p className="text-lg md:text-xl mb-6 opacity-80 max-w-3xl mx-auto">
               Get a complete workshop plan with AI-powered recommendations for equipment, layout, and financial projections
             </p>
           )}
-          {index === 1 && (
+          {currentSlide === 1 && (
             <p className="text-lg md:text-xl mb-6 opacity-80 max-w-3xl mx-auto">
               Comprehensive training programs to develop skilled technicians and management teams for your workshop
             </p>
           )}
-          {index === 2 && (
+          {currentSlide === 2 && (
             <p className="text-lg md:text-xl mb-6 opacity-80 max-w-3xl mx-auto">
               Expert consulting services to optimize operations, increase efficiency, and maximize profitability
             </p>
           )}
 
-                      {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {index === 0 ? (
-                // Workshop Solutions slide - link to AI Assistant
-                <Link
-                  href="/ai-assistant"
-                  className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full transition-colors duration-200"
-                  onClick={handleButtonClick}
-                >
-                  <span>Start AI Planning</span>
-                  <ArrowRight size={20} />
-                </Link>
-              ) : (
-                // Staff Development and Consulting slides - link to Solutions
-                <Link
-                  href="/solutions"
-                  className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full transition-colors duration-200"
-                  onClick={handleButtonClick}
-                >
-                  <span>{index === 1 ? 'Explore Staff Solutions' : 'View Consulting Services'}</span>
-                  <ArrowRight size={20} />
-                </Link>
-              )}
-            </div>
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            {currentSlide === 0 ? (
+              // Workshop Solutions slide - link to AI Assistant
+              <Link
+                href="/ai-assistant"
+                className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full transition-colors duration-200"
+                onClick={handleButtonClick}
+              >
+                <span>Start AI Planning</span>
+                <ArrowRight size={20} />
+              </Link>
+            ) : (
+              // Staff Development and Consulting slides - link to Solutions
+              <Link
+                href="/solutions"
+                className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full transition-colors duration-200"
+                onClick={handleButtonClick}
+              >
+                <span>{currentSlide === 1 ? 'Explore Staff Solutions' : 'View Consulting Services'}</span>
+                <ArrowRight size={20} />
+              </Link>
+            )}
+          </div>
         </div>
 
         {/* Watch Story Button - Positioned left bottom */}
@@ -291,7 +283,6 @@ const HeroSlider = () => {
           </button>
         </div>
       </div>
-      ))}
       
       {/* Slide Indicators */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
