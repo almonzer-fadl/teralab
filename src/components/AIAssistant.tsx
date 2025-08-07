@@ -28,6 +28,8 @@ const AIAssistant = ({ isPopup = true, onClose }: { isPopup?: boolean; onClose?:
   const [currentStep, setCurrentStep] = useState(0);
   const [workshopData, setWorkshopData] = useState<Partial<WorkshopData>>({});
   const [isLoading, setIsLoading] = useState(false);
+  const [generatedPlan, setGeneratedPlan] = useState<{ plan: string } | null>(null);
+  const [generatedImage, setGeneratedImage] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const conversationFlow = useMemo(() => [
@@ -193,43 +195,73 @@ const AIAssistant = ({ isPopup = true, onClose }: { isPopup?: boolean; onClose?:
   };
 
   const generateWorkshopPlan = async () => {
-    setIsLoading(true);
+  setIsLoading(true);
+  
+  const loadingMessage: Message = {
+    id: (Date.now() + 2).toString(),
+    type: 'bot',
+    content: "🤖 جاري إنشاء خطة الورشة المخصصة لك باستخدام الذكاء الاصطناعي...\n\n⏳ يرجى الانتظار، قد يستغرق هذا دقيقة...",
+    timestamp: new Date()
+  };
+  
+  setMessages(prev => [...prev, loadingMessage]);
+
+  try {
+    // Real API call instead of mock data
+    const response = await fetch('/api/ai/generate-plan', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(workshopData),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to generate plan');
+    }
+
+    const planData = await response.json();
     
-    const loadingMessage: Message = {
-      id: (Date.now() + 2).toString(),
+    // Store the generated plan and image
+    setGeneratedPlan(planData);
+    setGeneratedImage(planData.imageUrl);
+    
+    const planMessage: Message = {
+      id: (Date.now() + 3).toString(),
       type: 'bot',
-      content: "جاري إنشاء خطة الورشة المخصصة لك... / Generating your custom workshop plan...",
-      timestamp: new Date()
+      content: `🎯 **تم إنشاء خطة ورشة العمل المخصصة لك**
+
+${planData.plan}
+
+🎨 **تصميم الورشة المقترح:**
+![Workshop Design](${planData.imageUrl})
+
+**الخطوات التالية:**`,
+      timestamp: new Date(),
+      options: [
+        "تحميل الخطة كاملة (PDF) / Download Full Plan (PDF)",
+        "احجز استشارة مجانية / Book Free Consultation", 
+        "ادفع وابدأ التنفيذ / Pay & Start Implementation"
+      ]
     };
     
-    setMessages(prev => [...prev, loadingMessage]);
-
-    // Simulate AI processing
-    setTimeout(async () => {
-      try {
-        // Here you would call your AI API
-        const planSummary = generatePlanSummary();
-        
-        const planMessage: Message = {
-          id: (Date.now() + 3).toString(),
-          type: 'bot',
-          content: planSummary,
-          timestamp: new Date(),
-          options: [
-            "احصل على الخطة الكاملة (PDF) / Get Full Plan (PDF)",
-            "احجز استشارة مجانية / Book Free Consultation", 
-            "ابدأ التنفيذ معنا / Start Implementation"
-          ]
-        };
-        
-        setMessages(prev => [...prev.slice(0, -1), planMessage]);
-        setIsLoading(false);
-      } catch (error) {
-        console.error('Error generating plan:', error);
-        setIsLoading(false);
-      }
-    }, 3000);
-  };
+    setMessages(prev => [...prev.slice(0, -1), planMessage]);
+    setIsLoading(false);
+  } catch (error) {
+    console.error('Error generating plan:', error);
+    
+    const errorMessage: Message = {
+      id: (Date.now() + 4).toString(),
+      type: 'bot',
+      content: "عذراً، حدث خطأ في إنشاء الخطة. يرجى المحاولة مرة أخرى أو التواصل معنا مباشرة.\n\nSorry, there was an error generating the plan. Please try again or contact us directly.",
+      timestamp: new Date(),
+      options: ["إعادة المحاولة / Try Again", "تواصل معنا / Contact Us"]
+    };
+    
+    setMessages(prev => [...prev.slice(0, -1), errorMessage]);
+    setIsLoading(false);
+  }
+};
 
   const generatePlanSummary = () => {
     return `🎯 **خطة ورشة العمل المخصصة لك**
@@ -270,15 +302,66 @@ const AIAssistant = ({ isPopup = true, onClose }: { isPopup?: boolean; onClose?:
   };
 
   const handleActionSelect = async (action: string) => {
-    if (action.includes('PDF')) {
+    if (action.includes('تصميم') || action.includes('Design')) {
+      // Show workshop design image
+      if (generatedImage) {
+        const imageMessage: Message = {
+          id: Date.now().toString(),
+          type: 'bot',
+          content: `🎨 **تصميم الورشة المقترح:**\n\n![Workshop Design](${generatedImage})\n\nهذا تصميم مقترح لورشة العمل الخاصة بك بناءً على المتطلبات التي حددتها.`,
+          timestamp: new Date(),
+          options: [
+            "تحميل الخطة كاملة (PDF) / Download Full Plan (PDF)",
+            "احجز استشارة مجانية / Book Free Consultation", 
+            "ادفع وابدأ التنفيذ / Pay & Start Implementation"
+          ]
+        };
+        setMessages(prev => [...prev, imageMessage]);
+      }
+    }
+    else if (action.includes('PDF') || action.includes('تحميل')) {
       // Generate and download PDF
-      await generatePDF();
-    } else if (action.includes('استشارة') || action.includes('Consultation')) {
-      // Open booking calendar
+      try {
+        const response = await fetch('/api/ai/generate-pdf', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ workshopData, plan: generatedPlan?.plan, imageUrl: generatedImage }),
+        });
+        
+        if (response.ok) {
+          const blob = await response.blob();
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'teralab-workshop-plan.pdf';
+          a.click();
+        }
+      } catch (error) {
+        console.error('PDF generation error:', error);
+      }
+    } 
+    else if (action.includes('استشارة') || action.includes('Consultation')) {
+      // Open Calendly or booking
       window.open('https://calendly.com/teralab-consultation', '_blank');
-    } else if (action.includes('التنفيذ') || action.includes('Implementation')) {
-      // Redirect to payment
-      window.open('/pricing?service=implementation', '_blank');
+    } 
+    else if (action.includes('ادفع') || action.includes('Pay')) {
+      // Create Stripe checkout
+      try {
+        const response = await fetch('/api/ai/create-payment', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 
+            serviceType: 'implementation',
+            workshopData,
+            userEmail: 'user@example.com' // You'll need to collect this
+          }),
+        });
+        
+        const { url } = await response.json();
+        window.open(url, '_blank');
+      } catch (error) {
+        console.error('Payment error:', error);
+      }
     }
   };
 
@@ -360,19 +443,45 @@ const AIAssistant = ({ isPopup = true, onClose }: { isPopup?: boolean; onClose?:
                     ? 'bg-orange-600 text-white' 
                     : 'bg-gray-900 text-white border border-gray-700'
                 }`}>
-                  <div className="text-sm whitespace-pre-wrap">{message.content}</div>
+                  <div className="text-sm whitespace-pre-wrap">
+                    {message.content.includes('![') ? (
+                      <div>
+                        {message.content.split('\n').map((line, i) => {
+                          if (line.includes('![') && line.includes('](')) {
+                            const imageMatch = line.match(/!\[.*?\]\((.*?)\)/);
+                            if (imageMatch) {
+                              return (
+                                <img
+                                  key={i}
+                                  src={imageMatch[1]}
+                                  alt="Workshop Design"
+                                  className="w-full h-48 object-cover rounded-lg my-3 border border-gray-600"
+                                  onError={(e) => {
+                                    e.currentTarget.style.display = 'none';
+                                  }}
+                                />
+                              );
+                            }
+                          }
+                          return <div key={i}>{line}</div>;
+                        })}
+                      </div>
+                    ) : (
+                      message.content
+                    )}
+                  </div>
                   {message.options && (
                     <div className="mt-3 space-y-2">
                       {message.options.map((option, index) => (
                         <button
                           key={index}
-                          onClick={() => {
-                            if (message.options?.includes('PDF') || message.options?.includes('استشارة') || message.options?.includes('التنفيذ')) {
-                              handleActionSelect(option);
-                            } else {
-                              handleOptionSelect(option);
-                            }
-                          }}
+                                                     onClick={() => {
+                             if (message.options?.includes('PDF') || message.options?.includes('استشارة') || message.options?.includes('التنفيذ') || message.options?.includes('تصميم') || message.options?.includes('Design')) {
+                               handleActionSelect(option);
+                             } else {
+                               handleOptionSelect(option);
+                             }
+                           }}
                           className="block w-full text-left p-2 bg-gray-800 border border-gray-600 rounded hover:bg-gray-700 text-white text-sm transition-colors"
                           disabled={isLoading}
                         >
