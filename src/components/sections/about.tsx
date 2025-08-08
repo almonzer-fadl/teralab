@@ -6,24 +6,24 @@ const About = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="relative min-h-screen bg-black text-white overflow-hidden mb-0 pb-0">
+    <section className="relative lg:min-h-screen bg-black text-white overflow-hidden mb-0 pb-0">
       {/* Background Image - Train tracks at sunset */}
-             <div 
-         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
-       />
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
+      />
       
       {/* Content Container */}
-      <div className="relative z-10 container mx-auto px-4 py-20 mb-0 pb-0">
-        <div className="flex flex-col lg:flex-row items-center min-h-screen">
+      <div className="relative z-10 container mx-auto px-4 py-16 md:py-20 mb-0 pb-0">
+        <div className="flex flex-col lg:flex-row items-center lg:min-h-screen gap-8">
           
           {/* Left Content - Text */}
-          <div className="lg:w-1/2 lg:pr-12 mb-0 lg:mb-0">
-            <h2 className="text-3xl md:text-5xl font-serif text-white leading-tight mb-8">
+          <div className="lg:w-1/2 lg:pr-12 w-full">
+            <h2 className="text-3xl md:text-5xl font-serif text-white leading-tight mb-6 md:mb-8">
               {t('about.title')}
               <div className="w-24 h-1 bg-orange-500 mt-4"></div>
             </h2>
             
-            <p className="text-xl md:text-xl text-gray-300 leading-relaxed mb-8">
+            <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6 md:mb-8">
               {t('about.description')}
             </p>
             
@@ -38,8 +38,8 @@ const About = () => {
             </a>
           </div>
           
-          {/* Right Content - Background Image */}
-          <div className="lg:w-1/2">
+          {/* Right Content - Background Image (Hidden on mobile) */}
+          <div className="lg:w-1/2 hidden lg:block">
             <div className="relative">
               <div 
                 className="w-full h-96 lg:h-[600px] bg-cover bg-center bg-no-repeat rounded-lg shadow-2xl"
@@ -52,6 +52,9 @@ const About = () => {
           </div>
         </div>
       </div>
+      
+      {/* Bottom padding for better spacing */}
+      <div className="pb-8 md:pb-16 lg:pb-16"></div>
     </section>
   );
 };

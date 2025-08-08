@@ -40,20 +40,32 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
     setDirection(newDirection);
     
     if (typeof window !== 'undefined') {
-      document.documentElement.dir = newDirection;
-      document.documentElement.lang = locale;
-      
-      // Save preference to localStorage
-      localStorage.setItem('preferred-language', locale);
+      try {
+        document.documentElement.dir = newDirection;
+        document.documentElement.lang = locale;
+        
+        // Save preference to localStorage
+        if (window.localStorage) {
+          localStorage.setItem('preferred-language', locale);
+        }
+      } catch (error) {
+        console.error('Error updating document or localStorage:', error);
+      }
     }
   }, [locale]);
 
   // Load saved language preference on mount
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const savedLanguage = localStorage.getItem('preferred-language');
-      if (savedLanguage && ['en', 'ar'].includes(savedLanguage)) {
-        setLocale(savedLanguage);
+      try {
+        if (window.localStorage) {
+          const savedLanguage = localStorage.getItem('preferred-language');
+          if (savedLanguage && ['en', 'ar'].includes(savedLanguage)) {
+            setLocale(savedLanguage);
+          }
+        }
+      } catch (error) {
+        console.error('Error loading language preference:', error);
       }
     }
   }, []);

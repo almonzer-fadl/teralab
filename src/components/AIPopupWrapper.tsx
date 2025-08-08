@@ -31,14 +31,28 @@ const AIPopupWrapper = () => {
 
   return (
     <>
-      {/* Floating Button */}
+      {/* Floating Button - Fixed positioning for all devices */}
       {!isOpen && (
-        <div className="fixed bottom-6 right-6 z-40">
+        <div 
+          className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[99999]"
+          style={{
+            position: 'fixed',
+            bottom: '16px',
+            right: '16px',
+            zIndex: 99999,
+            pointerEvents: 'auto'
+          }}
+        >
           <button
             onClick={handleOpen}
-            className="group bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
+            className="group bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white p-3 md:p-4 lg:p-5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
+            style={{
+              zIndex: 99999,
+              position: 'relative',
+              pointerEvents: 'auto'
+            }}
           >
-            <Bot className="h-6 w-6" />
+            <Bot className="h-5 w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
             {showPopup && (
               <div className="absolute bottom-full right-0 mb-2 w-48 bg-gray-900 rounded-lg shadow-lg p-3 border border-gray-700">
                 <div className="text-sm text-white font-medium">
