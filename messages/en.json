@@ -4,7 +4,8 @@
     "solutions": "Solutions",
     "about": "About",
     "contact": "Contact",
-    "pricing": "Pricing"
+    "pricing": "Pricing",
+    "aiAssistant": "AI Assistant"
   },
   "hero": {
     "slide1": {
@@ -89,15 +90,65 @@
       "description": "Join hundreds of successful workshop owners who have transformed their businesses with our solutions.",
       "button": "Get Started Today"
     },
-    "contactInfo": {
-      "title": "Contact Information",
-      "email": {
-        "label": "Email",
-        "value": "info@teralab.com"
+      "contactInfo": {
+    "title": "Contact Information",
+    "email": {
+      "label": "Email",
+      "value": "info@teralab.com"
+    },
+    "phone": {
+      "label": "Phone",
+      "value": "123-4567 (555) 1+"
+  },
+  "aiAssistant": {
+    "title": "AI Assistant",
+    "subtitle": "Your Smart Workshop Planning Partner",
+    "usage": {
+      "title": "How to Use",
+      "description": "Get started with our AI assistant in just a few simple steps",
+      "step1": {
+        "title": "Answer Questions",
+        "description": "Respond to our AI's questions about your workshop requirements"
       },
-      "phone": {
-        "label": "Phone",
-        "value": "123-4567 (555) 1+"
+      "step2": {
+        "title": "Get Custom Plan",
+        "description": "Receive a personalized workshop plan tailored to your needs"
+      },
+      "step3": {
+        "title": "Download & Implement",
+        "description": "Download your plan and start implementing with our guidance"
+      }
+    },
+    "stats": {
+      "title": "Why Choose TeraBot",
+      "accuracy": {
+        "value": "95%",
+        "label": "Accuracy Rate"
+      },
+      "speed": {
+        "value": "< 2min",
+        "label": "Response Time"
+      },
+      "satisfaction": {
+        "value": "98%",
+        "label": "User Satisfaction"
+      }
+    },
+    "features": {
+      "title": "Key Features",
+      "intelligent": {
+        "title": "Intelligent Planning",
+        "description": "AI-powered workshop design and layout optimization"
+      },
+      "comprehensive": {
+        "title": "Comprehensive Analysis",
+        "description": "Detailed financial projections and market analysis"
+      },
+      "instant": {
+        "title": "Instant Results",
+        "description": "Get your complete workshop plan in minutes, not days"
+      }
+    }
       },
       "location": {
         "label": "Location",
@@ -380,6 +431,56 @@
       "support": {
         "title": "Support & Maintenance",
         "description": "We provide ongoing support and maintenance to ensure your workshop continues to operate at peak efficiency."
+      }
+    }
+  },
+  "aiAssistant": {
+    "title": "AI Assistant",
+    "subtitle": "Your Smart Workshop Planning Partner",
+    "usage": {
+      "title": "How to Use",
+      "description": "Get started with our AI assistant in just a few simple steps",
+      "step1": {
+        "title": "Answer Questions",
+        "description": "Respond to our AI's questions about your workshop requirements"
+      },
+      "step2": {
+        "title": "Get Custom Plan",
+        "description": "Receive a personalized workshop plan tailored to your needs"
+      },
+      "step3": {
+        "title": "Download & Implement",
+        "description": "Download your plan and start implementing with our guidance"
+      }
+    },
+    "stats": {
+      "title": "Why Choose TeraBot",
+      "accuracy": {
+        "value": "95%",
+        "label": "Accuracy Rate"
+      },
+      "speed": {
+        "value": "< 2min",
+        "label": "Response Time"
+      },
+      "satisfaction": {
+        "value": "98%",
+        "label": "User Satisfaction"
+      }
+    },
+    "features": {
+      "title": "Key Features",
+      "intelligent": {
+        "title": "Intelligent Planning",
+        "description": "AI-powered workshop design and layout optimization"
+      },
+      "comprehensive": {
+        "title": "Comprehensive Analysis",
+        "description": "Detailed financial projections and market analysis"
+      },
+      "instant": {
+        "title": "Instant Results",
+        "description": "Get your complete workshop plan in minutes, not days"
       }
     }
   }

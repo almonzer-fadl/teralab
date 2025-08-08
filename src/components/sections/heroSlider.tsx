@@ -264,23 +264,6 @@ const HeroSlider = () => {
               {slides[currentSlide].description}
             </p>
           )}
-          
-          {/* Additional descriptive text based on slide */}
-          {currentSlide === 0 && (
-            <p className="text-base md:text-lg lg:text-xl mb-6 opacity-80 max-w-3xl mx-auto">
-              Get a complete workshop plan with AI-powered recommendations for equipment, layout, and financial projections
-            </p>
-          )}
-          {currentSlide === 1 && (
-            <p className="text-base md:text-lg lg:text-xl mb-6 opacity-80 max-w-3xl mx-auto">
-              Comprehensive training programs to develop skilled technicians and management teams for your workshop
-            </p>
-          )}
-          {currentSlide === 2 && (
-            <p className="text-base md:text-lg lg:text-xl mb-6 opacity-80 max-w-3xl mx-auto">
-              Expert consulting services to optimize operations, increase efficiency, and maximize profitability
-            </p>
-          )}
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

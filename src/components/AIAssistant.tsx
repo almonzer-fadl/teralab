@@ -396,7 +396,7 @@ ${planData.plan}
   return (
     <div className={containerClass}>
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-gray-800 bg-black text-white rounded-t-lg">
+      <div className="flex items-center justify-between p-4 bg-black text-white rounded-t-lg">
         <div className="flex items-center space-x-2">
           <Bot className="h-5 w-5 text-orange-500" />
           <span className="font-semibold text-white">TeraBot</span>
@@ -441,7 +441,7 @@ ${planData.plan}
                 <div className={`rounded-lg p-3 ${
                   message.type === 'user' 
                     ? 'bg-orange-600 text-white' 
-                    : 'bg-gray-900 text-white border border-gray-700'
+                    : 'bg-gray-900 text-white '
                 }`}>
                   <div className="text-sm whitespace-pre-wrap">
                     {message.content.includes('![') ? (
@@ -482,7 +482,7 @@ ${planData.plan}
                                handleOptionSelect(option);
                              }
                            }}
-                          className="block w-full text-left p-2 bg-gray-800 border border-gray-600 rounded hover:bg-gray-700 text-white text-sm transition-colors"
+                          className="block w-full text-left p-2 bg-gray-800 rounded hover:bg-gray-700 text-white text-sm transition-colors"
                           disabled={isLoading}
                         >
                           {option}
@@ -499,14 +499,14 @@ ${planData.plan}
       </div>
 
       {/* Input Area */}
-      <div className="border-t border-gray-800 p-4 bg-black">
+      <div className=" p-4 bg-black">
         <div className="flex space-x-2">
           <input
             type="text"
             value={currentInput}
             onChange={(e) => setCurrentInput(e.target.value)}
             placeholder="اكتب رسالتك هنا... / Type your message..."
-            className="flex-1 border border-gray-600 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 bg-gray-800 text-white placeholder-gray-400"
+            className="flex-1 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 bg-gray-800 text-white placeholder-gray-400"
             onKeyPress={(e) => e.key === 'Enter' && currentInput.trim() && handleOptionSelect(currentInput)}
           />
           <button
