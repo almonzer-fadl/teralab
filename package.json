@@ -14,10 +14,12 @@
     "@radix-ui/react-menubar": "^1.1.15",
     "@radix-ui/react-slot": "^1.2.3",
     "@stripe/stripe-js": "^7.8.0",
+    "@supabase/supabase-js": "^2.54.0",
     "@types/papaparse": "^5.3.16",
     "@types/pdfkit": "^0.17.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dotenv": "^17.2.1",
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.534.0",
     "motion": "^12.23.12",
@@ -28,7 +30,9 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-scroll-motion": "^0.3.5",
+    "resend": "^6.0.1",
     "stripe": "^18.4.0",
+    "supabase": "^2.33.9",
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {

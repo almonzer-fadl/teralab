@@ -331,4 +331,3 @@ const AnimatedBackground = ({ className = '' }: { className?: string }) => {
 };
 
 export default AnimatedBackground;
-''

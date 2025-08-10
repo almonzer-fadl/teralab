@@ -77,7 +77,7 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
     setIsClient(true);
   }, []);
 
-  const t = (key: string, options?: { returnObjects?: boolean }): string => {
+  const t = useCallback((key: string, options?: { returnObjects?: boolean }): string => {
     const keys = key.split('.');
     let value: string | TranslationData = translations[locale];
     
@@ -91,12 +91,12 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
     
     // Always return as string for JSX compatibility
     return typeof value === 'string' ? value : String(value || key);
-  };
+  }, [locale]);
 
   // Return a stable translation function that prevents hydration issues
   const stableT = useCallback((key: string, options?: { returnObjects?: boolean }): string => {
     return t(key, options);
-  }, [locale]);
+  }, [t]);
 
   const toggleLanguage = (): void => {
     setLocale(prev => prev === 'en' ? 'ar' : 'en');
