@@ -87,6 +87,9 @@ const PricingPage = () => {
   return (
     <>
     <NavigationBar/>
+    {/* Animated background bubbles */}
+    <AnimatedBackground className="absolute inset-0 z-0" />
+    
     <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* Hero Section with Motion Background */}
       <section className="relative py-20 overflow-hidden">
@@ -132,8 +135,6 @@ const PricingPage = () => {
 
       {/* Pricing Section - Fluid Design */}
       <section className="py-20 relative z-10" ref={sectionRef}>
-        {/* Animated background bubbles */}
-        <AnimatedBackground className="absolute inset-0 z-0" />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-7xl mx-auto">

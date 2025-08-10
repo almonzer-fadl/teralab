@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useEffect, useRef, useState, useCallback } from 'react';
@@ -118,7 +119,7 @@ const AnimatedBackground = ({ className = '' }: { className?: string }) => {
   return (
     <div
       ref={sectionRef}
-      className={`relative overflow-hidden ${className}`}
+      className={`absolute inset-0 pointer-events-none overflow-hidden ${className}`}
     >
       {/* Background with spotlight effect - always render, but dynamic only when isClient */}
       <div 
@@ -330,3 +331,4 @@ const AnimatedBackground = ({ className = '' }: { className?: string }) => {
 };
 
 export default AnimatedBackground;
+''

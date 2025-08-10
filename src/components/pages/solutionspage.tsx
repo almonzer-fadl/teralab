@@ -162,7 +162,7 @@ const SolutionsPage = () => {
               </div>
             </div>
           </section>
-        </div>
+        </div> 
       <Footer />
     </>
   );

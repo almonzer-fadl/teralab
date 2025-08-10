@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useRef, useEffect, useMemo } from 'react';
-import { Send, Bot, User, X, Minimize2, Maximize2 } from 'lucide-react';
+import { Send, Bot, User, X, Minimize2, Maximize2, Download, MessageCircle, BookOpen, CreditCard, Home } from 'lucide-react';
+import LanguageSwitcher from '@/components/sections/languageSwitcher';
 
 interface Message {
   id: string;
@@ -376,6 +377,7 @@ ${planData.plan}
     setMessages(prev => [...prev, pdfMessage]);
   };
 
+  // For popup mode, show minimized button
   if (isPopup && isMinimized) {
     return (
       <div className="fixed bottom-4 right-4 z-50">
@@ -389,133 +391,265 @@ ${planData.plan}
     );
   }
 
-  const containerClass = isPopup 
-    ? "fixed bottom-4 right-4 w-96 h-[600px] bg-black rounded-lg shadow-2xl border border-gray-800 z-50"
-    : "w-full max-w-4xl mx-auto bg-black rounded-lg shadow-lg border border-gray-800";
-
-  return (
-    <div className={containerClass}>
-      {/* Header */}
-      <div className="flex items-center justify-between p-4 bg-black text-white rounded-t-lg">
-        <div className="flex items-center space-x-2">
-          <Bot className="h-5 w-5 text-orange-500" />
-          <span className="font-semibold text-white">TeraBot</span>
+  // For popup mode, show popup container
+  if (isPopup) {
+    const containerClass = "fixed bottom-4 right-4 w-96 h-[600px] bg-black rounded-lg shadow-2xl border border-gray-800 z-50 flex flex-col";
+    
+    return (
+      <div className={containerClass}>
+        {/* Header */}
+        <div className="flex items-center justify-between p-4 bg-black text-white rounded-t-lg flex-shrink-0">
+          <div className="flex items-center space-x-2">
+            <Bot className="h-5 w-5 text-orange-500" />
+            <span className="font-semibold text-white">TeraBot</span>
+          </div>
+          <div className="flex space-x-2">
+            <button 
+              onClick={() => setIsMinimized(true)}
+              className="hover:bg-gray-800 p-1 rounded text-gray-300 hover:text-white"
+            >
+              <Minimize2 className="h-4 w-4" />
+            </button>
+            <button 
+              onClick={onClose}
+              className="hover:bg-gray-800 p-1 rounded text-gray-300 hover:text-white"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
         </div>
-        <div className="flex space-x-2">
-          {isPopup && (
-            <>
-              <button 
-                onClick={() => setIsMinimized(true)}
-                className="hover:bg-gray-800 p-1 rounded text-gray-300 hover:text-white"
+
+        {/* Messages */}
+        <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-black scroll-smooth">
+          <div className="space-y-4">
+            {messages.map((message) => (
+              <div
+                key={message.id}
+                className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
               >
-                <Minimize2 className="h-4 w-4" />
-              </button>
-              <button 
-                onClick={onClose}
-                className="hover:bg-gray-800 p-1 rounded text-gray-300 hover:text-white"
-              >
-                <X className="h-4 w-4" />
-              </button>
-            </>
-          )}
+                <div className={`flex space-x-2 max-w-xs ${message.type === 'user' ? 'flex-row-reverse space-x-reverse' : ''}`}>
+                  <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
+                    message.type === 'user' ? 'bg-orange-600' : 'bg-gray-700'
+                  }`}>
+                    {message.type === 'user' ? 
+                      <User className="h-4 w-4 text-white" /> : 
+                      <Bot className="h-4 w-4 text-white" />
+                    }
+                  </div>
+                  <div className={`rounded-lg p-3 ${
+                    message.type === 'user' 
+                      ? 'bg-orange-600 text-white' 
+                      : 'bg-gray-900 text-white '
+                  }`}>
+                    <div className="text-sm whitespace-pre-wrap">
+                      {message.content.includes('![') ? (
+                        <div>
+                          {message.content.split('\n').map((line, i) => {
+                            if (line.includes('![') && line.includes('](')) {
+                              const imageMatch = line.match(/!\[.*?\]\((.*?)\)/);
+                              if (imageMatch) {
+                                return (
+                                  <img
+                                    key={i}
+                                    src={imageMatch[1]}
+                                    alt="Workshop Design"
+                                    className="w-full h-48 object-cover rounded-lg my-3 border border-gray-600"
+                                    onError={(e) => {
+                                      e.currentTarget.style.display = 'none';
+                                    }}
+                                  />
+                                );
+                              }
+                            }
+                            return <div key={i}>{line}</div>;
+                          })}
+                        </div>
+                      ) : (
+                        message.content
+                      )}
+                    </div>
+                    {message.options && (
+                      <div className="mt-3 space-y-2">
+                        {message.options.map((option, index) => (
+                          <button
+                            key={index}
+                            onClick={() => {
+                              if (message.options?.includes('PDF') || message.options?.includes('استشارة') || message.options?.includes('التنفيذ') || message.options?.includes('تصميم') || message.options?.includes('Design')) {
+                                handleActionSelect(option);
+                              } else {
+                                handleOptionSelect(option);
+                              }
+                            }}
+                            className="block w-full text-left p-2 bg-gray-800 rounded hover:bg-gray-700 text-white text-sm transition-colors"
+                            disabled={isLoading}
+                          >
+                            {option}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+            <div ref={messagesEndRef} />
+          </div>
+        </div>
+
+        {/* Input Area */}
+        <div className="p-4 bg-black flex-shrink-0">
+          <div className="flex space-x-2">
+            <input
+              type="text"
+              value={currentInput}
+              onChange={(e) => setCurrentInput(e.target.value)}
+              placeholder="اكتب رسالتك هنا... / Type your message..."
+              className="flex-1 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 bg-gray-800 text-white placeholder-gray-400"
+              onKeyPress={(e) => e.key === 'Enter' && currentInput.trim() && handleOptionSelect(currentInput)}
+            />
+            <button
+              onClick={() => currentInput.trim() && handleOptionSelect(currentInput)}
+              className="bg-orange-600 hover:bg-orange-700 text-white p-2 rounded-lg transition-colors"
+              disabled={!currentInput.trim() || isLoading}
+            >
+              <Send className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Full-screen chatbot layout (like ChatGPT/Claude)
+  return (
+    <div className="flex flex-col h-screen bg-black">
+      {/* Header */}
+      <div className="flex items-center justify-between p-4 bg-gray-900 border-b border-gray-800">
+        <div className="flex items-center space-x-3">
+          <div className="w-10 h-10 bg-orange-600 rounded-lg flex items-center justify-center">
+            <Bot className="h-6 w-6 text-white" />
+          </div>
+          <div>
+            <h1 className="text-xl font-bold text-white">TeraLab AI Assistant</h1>
+            <p className="text-sm text-gray-400">Your Auto Workshop Planning Expert</p>
+          </div>
+        </div>
+        <div className="flex items-center space-x-3">
+          <LanguageSwitcher />
+          <button 
+            onClick={() => window.location.href = '/'}
+            className="p-2 hover:bg-gray-800 rounded-lg text-gray-400 hover:text-white transition-colors"
+            title="Go Home"
+          >
+            <Home className="h-5 w-5" />
+          </button>
         </div>
       </div>
 
-      {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4 h-96 bg-black scroll-smooth">
-        <div className="space-y-4">
-          {messages.map((message) => (
-            <div
-              key={message.id}
-              className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
-            >
-              <div className={`flex space-x-2 max-w-xs ${message.type === 'user' ? 'flex-row-reverse space-x-reverse' : ''}`}>
-                <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
-                  message.type === 'user' ? 'bg-orange-600' : 'bg-gray-700'
-                }`}>
-                  {message.type === 'user' ? 
-                    <User className="h-4 w-4 text-white" /> : 
-                    <Bot className="h-4 w-4 text-white" />
-                  }
-                </div>
-                <div className={`rounded-lg p-3 ${
-                  message.type === 'user' 
-                    ? 'bg-orange-600 text-white' 
-                    : 'bg-gray-900 text-white '
-                }`}>
-                  <div className="text-sm whitespace-pre-wrap">
-                    {message.content.includes('![') ? (
-                      <div>
-                        {message.content.split('\n').map((line, i) => {
-                          if (line.includes('![') && line.includes('](')) {
-                            const imageMatch = line.match(/!\[.*?\]\((.*?)\)/);
-                            if (imageMatch) {
-                              return (
-                                <img
-                                  key={i}
-                                  src={imageMatch[1]}
-                                  alt="Workshop Design"
-                                  className="w-full h-48 object-cover rounded-lg my-3 border border-gray-600"
-                                  onError={(e) => {
-                                    e.currentTarget.style.display = 'none';
-                                  }}
-                                />
-                              );
+      {/* Main Chat Area */}
+      <div className="flex-1 overflow-y-auto bg-black">
+        <div className="max-w-4xl mx-auto px-4 py-8">
+          <div className="space-y-6">
+            {messages.map((message) => (
+              <div
+                key={message.id}
+                className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
+              >
+                <div className={`flex space-x-4 max-w-3xl ${message.type === 'user' ? 'flex-row-reverse space-x-reverse' : ''}`}>
+                  <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center ${
+                    message.type === 'user' ? 'bg-orange-600' : 'bg-gray-700'
+                  }`}>
+                    {message.type === 'user' ? 
+                      <User className="h-5 w-5 text-white" /> : 
+                      <Bot className="h-5 w-5 text-white" />
+                    }
+                  </div>
+                  <div className={`rounded-xl p-4 ${
+                    message.type === 'user' 
+                      ? 'bg-orange-600 text-white' 
+                      : 'bg-gray-900 text-white border border-gray-800'
+                  }`}>
+                    <div className="text-base leading-relaxed whitespace-pre-wrap">
+                      {message.content.includes('![') ? (
+                        <div>
+                          {message.content.split('\n').map((line, i) => {
+                            if (line.includes('![') && line.includes('](')) {
+                              const imageMatch = line.match(/!\[.*?\]\((.*?)\)/);
+                              if (imageMatch) {
+                                return (
+                                  <img
+                                    key={i}
+                                    src={imageMatch[1]}
+                                    alt="Workshop Design"
+                                    className="w-full max-w-md h-64 object-cover rounded-lg my-4 border border-gray-600"
+                                    onError={(e) => {
+                                      e.currentTarget.style.display = 'none';
+                                    }}
+                                  />
+                                );
+                              }
                             }
-                          }
-                          return <div key={i}>{line}</div>;
-                        })}
+                            return <div key={i}>{line}</div>;
+                          })}
+                        </div>
+                      ) : (
+                        message.content
+                      )}
+                    </div>
+                    {message.options && (
+                      <div className="mt-4 space-y-2">
+                        {message.options.map((option, index) => (
+                          <button
+                            key={index}
+                            onClick={() => {
+                              if (message.options?.includes('PDF') || message.options?.includes('استشارة') || message.options?.includes('التنفيذ') || message.options?.includes('تصميم') || message.options?.includes('Design')) {
+                                handleActionSelect(option);
+                              } else {
+                                handleOptionSelect(option);
+                              }
+                            }}
+                            className="block w-full text-left p-3 bg-gray-800 rounded-lg hover:bg-gray-700 text-white text-sm transition-colors border border-gray-700 hover:border-gray-600"
+                            disabled={isLoading}
+                          >
+                            {option}
+                          </button>
+                        ))}
                       </div>
-                    ) : (
-                      message.content
                     )}
                   </div>
-                  {message.options && (
-                    <div className="mt-3 space-y-2">
-                      {message.options.map((option, index) => (
-                        <button
-                          key={index}
-                                                     onClick={() => {
-                             if (message.options?.includes('PDF') || message.options?.includes('استشارة') || message.options?.includes('التنفيذ') || message.options?.includes('تصميم') || message.options?.includes('Design')) {
-                               handleActionSelect(option);
-                             } else {
-                               handleOptionSelect(option);
-                             }
-                           }}
-                          className="block w-full text-left p-2 bg-gray-800 rounded hover:bg-gray-700 text-white text-sm transition-colors"
-                          disabled={isLoading}
-                        >
-                          {option}
-                        </button>
-                      ))}
-                    </div>
-                  )}
                 </div>
               </div>
-            </div>
-          ))}
-          <div ref={messagesEndRef} />
+            ))}
+            <div ref={messagesEndRef} />
+          </div>
         </div>
       </div>
 
       {/* Input Area */}
-      <div className=" p-4 bg-black">
-        <div className="flex space-x-2">
-          <input
-            type="text"
-            value={currentInput}
-            onChange={(e) => setCurrentInput(e.target.value)}
-            placeholder="اكتب رسالتك هنا... / Type your message..."
-            className="flex-1 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 bg-gray-800 text-white placeholder-gray-400"
-            onKeyPress={(e) => e.key === 'Enter' && currentInput.trim() && handleOptionSelect(currentInput)}
-          />
-          <button
-            onClick={() => currentInput.trim() && handleOptionSelect(currentInput)}
-            className="bg-orange-600 hover:bg-orange-700 text-white p-2 rounded-lg transition-colors"
-            disabled={!currentInput.trim() || isLoading}
-          >
-            <Send className="h-4 w-4" />
-          </button>
+      <div className="border-t border-gray-800 bg-gray-900 p-4">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex space-x-4">
+            <div className="flex-1 relative">
+              <input
+                type="text"
+                value={currentInput}
+                onChange={(e) => setCurrentInput(e.target.value)}
+                placeholder="اكتب رسالتك هنا... / Type your message..."
+                className="w-full rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-orange-500 bg-gray-800 text-white placeholder-gray-400 text-base"
+                onKeyPress={(e) => e.key === 'Enter' && currentInput.trim() && handleOptionSelect(currentInput)}
+              />
+            </div>
+            <button
+              onClick={() => currentInput.trim() && handleOptionSelect(currentInput)}
+              className="bg-orange-600 hover:bg-orange-700 text-white p-3 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled={!currentInput.trim() || isLoading}
+            >
+              <Send className="h-5 w-5" />
+            </button>
+          </div>
+          <div className="mt-3 text-xs text-gray-500 text-center">
+            TeraLab AI Assistant - Your Auto Workshop Planning Expert
+          </div>
         </div>
       </div>
     </div>

@@ -35,7 +35,6 @@ const AboutPage = () => {
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
       {/* Background Motion Bubbles */}
       <AnimatedBackground className="absolute inset-0 z-0" />
-      
       {/* Hero Section with Motion Background */}
       <section className="relative py-20 overflow-hidden z-10">
           {/* Content */}
@@ -125,8 +124,8 @@ const AboutPage = () => {
             </div>
           </div>
         </section>
-    </div>
-    <Footer />
+      </div>
+      <Footer />
     </>
   );
 };
