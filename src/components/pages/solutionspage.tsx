@@ -2,168 +2,168 @@
 
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useServices } from "@/lib/constants";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import NavigationBar from '@/components/sections/navigationBar';
 import Footer from '@/components/sections/footer';
+import AnimatedBackground from '@/components/ui/motionBubbles';
+import { useEffect, useState, useCallback } from 'react';
 
 const SolutionsPage = () => {
   const { t } = useLanguage();
   const services = useServices();
+  const [scrollY, setScrollY] = useState(0);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const handleScroll = useCallback(() => {
+    setScrollY(window.scrollY);
+  }, []);
+
+  useEffect(() => {
+    // Only add event listener on client side
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }
+  }, [handleScroll]);
 
   return (
     <>
-    <NavigationBar/>
-    <div className="min-h-screen bg-black text-white">
-      {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden">
-        {/* Background */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
-          style={{
-            backgroundImage: 'url("https://images.unsplash.com/photo-1563720223185-11003d516935?w=1200&h=800&fit=crop&crop=center")'
-          }}
-        />
+      <NavigationBar/>
+      <div className="bg-black text-white relative overflow-hidden">
+        {/* Background Motion Bubbles */}
+        <AnimatedBackground className="absolute inset-0 z-0" />
         
-        {/* Content */}
-        <div className="relative z-10 container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-7xl font-serif text-white leading-tight mb-8">
-              {t('solutions.title')}
-              <div className="w-32 h-1 bg-orange-500 mx-auto mt-4"></div>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              {t('solutions.description')}
-            </p>
-          </div>
-        </div>
-      </section>
+        {/* Hero Section */}
+        <section className="pt-32 pb-16 relative z-10">
+            <div className="container mx-auto px-6">
+              <div className="max-w-4xl mx-auto text-center">
+                <div 
+                  className="transition-all duration-1000"
+                  style={{
+                    transform: isClient ? `translateY(${Math.max(0, scrollY * 0.05)}px)` : 'translateY(0px)',
+                    opacity: isClient ? Math.max(0.7, 1 - scrollY * 0.0005) : 1
+                  }}
+                >
+                  <h1 className="text-6xl md:text-8xl font-light text-white mb-8 leading-tight">
+                    {t('solutions.title')}
+                  </h1>
+                  <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-light">
+                    {t('solutions.description')}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
 
-      {/* Solutions Grid Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.map((service) => (
-                <Card key={service.id} className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 hover:border-orange-500 transition-all duration-300 group">
-                  <CardHeader className="pb-6">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
-                        <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/>
-                        </svg>
-                      </div>
-                      <div className="text-right">
-                        <span className="inline-block bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold">
-                          {service.type}
-                        </span>
-                      </div>
-                    </div>
-                    <CardTitle className="text-2xl font-serif text-white group-hover:text-orange-400 transition-colors duration-200">
-                      {service.title}
-                    </CardTitle>
-                  </CardHeader>
+          {/* Services Section */}
+          <section className="py-16 relative z-10">
+            <div className="container mx-auto px-6">
+              <div className="max-w-6xl mx-auto space-y-12">
+                {services.map((service, index) => {
+                  const scrollOffset = isClient ? scrollY - (index * 300) : 0;
+                  const translateY = isClient ? Math.max(0, scrollOffset * 0.03) : 0;
+                  const opacity = isClient ? Math.max(0.6, 1 - Math.max(0, scrollOffset * 0.0003)) : 1;
                   
-                  <CardContent className="space-y-6">
-                    <p className="text-gray-300 leading-relaxed">
-                      {service.intro}
-                    </p>
-                    
-                    <div className="flex justify-between items-center pt-4 border-t border-gray-800">
-                      <span className="text-sm font-medium text-gray-400">
-                        {service.priceModel}
-                      </span>
-                      <button className="text-orange-500 hover:text-orange-400 font-semibold transition-colors duration-200">
-                        {t('solutions.learnMore')} →
-                      </button>
+                  return (
+                    <div 
+                      key={service.id} 
+                      className="group"
+                      style={{
+                        transform: `translateY(${translateY}px)`,
+                        opacity: opacity
+                      }}
+                    >
+                      <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+                        {/* Service Number */}
+                        <div className="text-right lg:order-1 order-2">
+                          <span 
+                            className="text-8xl md:text-9xl font-extralight text-gray-800 leading-none block transition-all duration-700 group-hover:scale-110 group-hover:text-orange-500/20"
+                          >
+                            {(index + 1).toString().padStart(2, '0')}
+                          </span>
+                        </div>
+                        
+                        {/* Service Content */}
+                        <div className="lg:col-span-2 lg:order-2 order-1">
+                          <div className="space-y-6 transition-all duration-500 group-hover:scale-105">
+                            {/* Service Type Badge */}
+                            <div className="inline-block">
+                              <span className="text-sm font-medium text-orange-400 uppercase tracking-wider group-hover:text-orange-300 transition-colors duration-300">
+                                {service.type}
+                              </span>
+                            </div>
+                            
+                            {/* Service Title */}
+                            <h2 className="text-4xl md:text-5xl font-light text-white leading-tight group-hover:text-orange-100 transition-colors duration-300">
+                              {service.title}
+                            </h2>
+                            
+                            {/* Service Description */}
+                            <p className="text-lg md:text-xl text-gray-400 leading-relaxed max-w-2xl group-hover:text-gray-300 transition-colors duration-300">
+                              {service.intro}
+                            </p>
+                            
+                            {/* Service Details */}
+                            <div className="flex items-center justify-between pt-8 border-t border-gray-800 group-hover:border-orange-500/30 transition-colors duration-300">
+                              <span className="text-sm text-gray-500 uppercase tracking-wider group-hover:text-gray-400 transition-colors duration-300">
+                                {service.priceModel}
+                              </span>
+                              <button className="group/btn flex items-center text-orange-400 hover:text-orange-300 transition-all duration-300 hover:scale-110 hover:translate-x-2">
+                                <span className="mr-2">{t('solutions.learnMore')}</span>
+                                <svg className="w-4 h-4 transform group-hover/btn:translate-x-2 group-hover/btn:rotate-12 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-serif text-white leading-tight mb-8">
-                {t('solutions.features.title')}
-              </h2>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                {t('solutions.features.description')}
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-gray-800 text-center">
-                <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">
-                  {t('solutions.features.ai.title')}
-                </h3>
-                <p className="text-gray-400">
-                  {t('solutions.features.ai.description')}
-                </p>
-              </div>
-
-              <div className="bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-gray-800 text-center">
-                <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">
-                  {t('solutions.features.expertise.title')}
-                </h3>
-                <p className="text-gray-400">
-                  {t('solutions.features.expertise.description')}
-                </p>
-              </div>
-
-              <div className="bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-gray-800 text-center">
-                <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">
-                  {t('solutions.features.integration.title')}
-                </h3>
-                <p className="text-gray-400">
-                  {t('solutions.features.integration.description')}
-                </p>
+                  );
+                })}
               </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
 
-      {/* CTA Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl p-12 text-center">
-              <h2 className="text-4xl md:text-5xl font-serif text-white leading-tight mb-8">
-                {t('solutions.cta.title')}
-              </h2>
-              <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed mb-8">
-                {t('solutions.cta.description')}
-              </p>
-              <button className="bg-white text-orange-500 hover:bg-gray-100 font-bold py-4 px-8 rounded-lg transition-colors duration-200">
-                {t('solutions.cta.button')}
-              </button>
+          {/* CTA Section - Moved directly after features */}
+          <section className="py-16 relative z-10">
+            <div className="container mx-auto px-6">
+              <div className="max-w-4xl mx-auto text-center">
+                <div className="space-y-6">
+                  <h2 className="text-4xl md:text-5xl font-light text-white">
+                    Ready to Transform Your Workshop?
+                  </h2>
+                  <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light leading-relaxed">
+                    Join hundreds of workshops that have already revolutionized their operations with our AI-powered solutions.
+                  </p>
+                  
+                  <div className="pt-6 flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    {/* Primary CTA Button */}
+                    <button className="group relative inline-flex items-center gap-3 px-8 md:px-10 py-4 md:py-5 text-lg font-medium text-white bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/25 transform hover:-translate-y-1">
+                      <span>Start Now</span>
+                      <svg className="w-5 h-5 transform group-hover:translate-x-2 group-hover:rotate-12 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                      {/* Glow effect */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-orange-500 rounded-full blur opacity-0 group-hover:opacity-20 transition-opacity duration-300 -z-10" />
+                    </button>
+                  </div>
+                  
+                  {/* Additional Info */}
+                  <div className="pt-6 text-center">
+                    <p className="text-sm text-gray-500 max-w-md mx-auto">
+                      Get personalized solutions tailored to your workshop&apos;s specific needs and challenges.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+          </section>
         </div>
-      </section>
-    </div>
-    <Footer />
+      <Footer />
     </>
   );
 };

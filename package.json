@@ -27,6 +27,7 @@
     "pdfkit": "^0.17.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "react-scroll-motion": "^0.3.5",
     "stripe": "^18.4.0",
     "tailwind-merge": "^3.3.1"
   },

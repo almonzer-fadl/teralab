@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, ReactNode } from 'react';
 
 // Define types
 interface TranslationData {
@@ -70,6 +70,13 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
     }
   }, []);
 
+  // Prevent hydration mismatch by ensuring consistent initial render
+  const [isClient, setIsClient] = useState(false);
+  
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   const t = (key: string, options?: { returnObjects?: boolean }): string => {
     const keys = key.split('.');
     let value: string | TranslationData = translations[locale];
@@ -86,6 +93,11 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
     return typeof value === 'string' ? value : String(value || key);
   };
 
+  // Return a stable translation function that prevents hydration issues
+  const stableT = useCallback((key: string, options?: { returnObjects?: boolean }): string => {
+    return t(key, options);
+  }, [locale]);
+
   const toggleLanguage = (): void => {
     setLocale(prev => prev === 'en' ? 'ar' : 'en');
   };
@@ -93,7 +105,7 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
   const value: LanguageContextType = {
     locale,
     direction,
-    t,
+    t: stableT,
     toggleLanguage,
     setLocale
   };
