@@ -1,5 +1,9 @@
 'use client';
 
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import NavigationBar from '@/components/sections/navigationBar';
 import Footer from '@/components/sections/footer';
@@ -7,14 +11,16 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { useEffect, useState, useRef } from 'react';
 import AnimatedBackground from '@/components/ui/motionBubbles';
 
 const ContactPage = () => {
   const { t } = useLanguage();
+  const searchParams = useSearchParams();
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [isClient, setIsClient] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     setIsClient(true);
@@ -31,6 +37,14 @@ const ContactPage = () => {
       return () => window.removeEventListener('scroll', handleScroll);
     }
   }, []);
+
+  useEffect(() => {
+    // Check if form was submitted successfully
+    const status = searchParams.get('status');
+    if (status === 'success') {
+      setIsSubmitted(true);
+    }
+  }, [searchParams]);
 
   return (
     <>

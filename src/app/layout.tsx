@@ -2,6 +2,10 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/globals.css";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { Suspense } from "react";
+import ProtectedWhatsApp from '@/components/ProtectedWhatsApp';
+import ErrorBoundary from '@/components/ErrorBoundary';
+import Analytics from '@/components/Analytics';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -94,7 +98,13 @@ export default function RootLayout({
         }}
       >
         <LanguageProvider>
-          {children}
+          <ErrorBoundary>
+            {children}
+            <Analytics />
+            <Suspense fallback={null}>
+              <ProtectedWhatsApp />
+            </Suspense>
+          </ErrorBoundary>
         </LanguageProvider>
       </body>
     </html>

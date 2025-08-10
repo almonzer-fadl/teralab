@@ -1,12 +1,11 @@
-import ContactPage from '@/components/pages/contactpage'
-import React from 'react'
+import { Suspense } from 'react';
+import ContactPage from '@/components/pages/contactpage';
+import LoadingSpinner from '@/components/LoadingSpinner';
 
-const page = () => {
+export default function Contact() {
   return (
-    <div>
-        <ContactPage />
-    </div>
-  )
+    <Suspense fallback={<LoadingSpinner />}>
+      <ContactPage />
+    </Suspense>
+  );
 }
-
-export default page
